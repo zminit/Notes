@@ -88,8 +88,71 @@ $$
 $$ 
 
 # 3. 仿射变换
-### 3.1 其次坐标
-为了解决平移问题无法使用矩阵表示的问题，引入其次
+### 3.1 齐次坐标
+为了解决平移问题无法使用矩阵表示的问题，引入齐次坐标，这里第三维区别在平移矩阵笔记小结讲解
 $$
+\begin{matrix}
+    向量：\vec{a} = (x,y,0) \\
+    坐标点：a = (x,y,1) 
+\end{matrix}
 $$
+非齐次坐标平移变换：
+$$
+\begin{bmatrix}
+    x^\prime \\ y^\prime
+\end{bmatrix} =
+\begin{bmatrix}
+    1 & 0 \\ 
+    0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+    x \\ y
+\end{bmatrix}
++
+\begin{bmatrix}
+    t_x \\ t_y
+\end{bmatrix}
+$$
+
+### 3.2 平移矩阵
+$$
+\begin{matrix}
+    \begin{cases}
+        x^\prime = x + t_x \\
+        y^\prime = y + t_y
+    \end{cases} \\ \\
+    坐标点平移：
+    \begin{bmatrix}
+        x^\prime \\ y^\prime \\ 1
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        1 & 0 & t_x \\
+        0 & 1 & t_y \\
+        0 & 0 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+        x  \\ y \\ 1
+    \end{bmatrix}=
+    \begin{bmatrix}
+        x+t_x \\ y+t_y \\ 1 
+    \end{bmatrix} \\ \\
+    向量平移：
+    \begin{bmatrix}
+        x^\prime \\ y^\prime \\ 0
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        1 & 0 & t_x \\
+        0 & 1 & t_y \\
+        0 & 0 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+        x  \\ y \\ 0
+    \end{bmatrix}=
+    \begin{bmatrix}
+        x \\ y \\ 0
+    \end{bmatrix}
+\end{matrix} 
+$$
+不难发现，向量的齐次坐标第三维设置为0可以保证向量的平移不变性。
+>其余变换对应的仿射变换矩阵只需要在(3,3)处添加1即可，其余位置为0
 
