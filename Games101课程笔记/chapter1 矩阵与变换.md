@@ -86,6 +86,7 @@ $$
     \theta 为逆时针旋转的角度
 \end{matrix}
 $$ 
+>旋转矩阵为正交矩阵
 
 # 3. 仿射变换
 ### 3.1 齐次坐标
@@ -155,4 +156,32 @@ $$
 $$
 不难发现，向量的齐次坐标第三维设置为0可以保证向量的平移不变性。
 >其余变换对应的仿射变换矩阵只需要在(3,3)处添加1即可，其余位置为0
+
+### 3.3 组合变换
+$$
+\begin{matrix}
+    \begin{bmatrix}
+        x^\prime \\
+        y^\prime \\
+        z^\prime \\
+        0 or 1
+    \end{bmatrix} =
+    \begin{bmatrix}
+        1 & 0 & 0 &t_x \\
+        0 & 1 & 0 &t_y \\
+        0 & 0 & 1 &t_z \\
+        0 & 0 & 0 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+        a & b & c & 0 \\
+        d & e & f & 0\\
+        g & h & i & 0\\
+        0 & 0 &0 &1
+    \end{bmatrix}
+    \begin{bmatrix}
+        x\\y\\z\\0or1
+    \end{bmatrix}
+\end{matrix}
+$$
+>一般物体先线性变换，后平移变换
 
