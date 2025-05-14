@@ -74,7 +74,7 @@ $$
     b & 1
 \end{bmatrix}
 $$
-<center><img src="./附件/image.png" width="250"></center>
+<center><img src="../images/2025051400.png" width="250"></center>
 
 ### 2.4 旋转矩阵
 $$
