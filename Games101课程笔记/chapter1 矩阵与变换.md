@@ -192,7 +192,7 @@ $$
         0 & 0 &0 &1
     \end{bmatrix}
     \begin{bmatrix}
-        x\\y\\z\\0or1
+        x \\ y \\ z \\ 0 or 1
     \end{bmatrix}
 \end{matrix}
 $$
@@ -211,6 +211,9 @@ $$
 
 # 5. 投影变换(Projection transformation)
 >将三维坐标投影到二维
+
+$$M_{proj} = M_{ortho} M_{persp}$$
+
 ### 5.1 正交投影（Orthographic）
 将矩形空间缩放到标准正方体中
 
@@ -228,3 +231,47 @@ $$
 ### 5.2 透视投影（Perspective projection）
 
 <center><img alt=picture 0 src=../images/chapter1%20%E7%9F%A9%E9%98%B5%E4%B8%8E%E5%8F%98%E6%8D%A21748264356044.png width=400></center>
+
+<center><img alt=picture 1 src=../images/chapter1%20%E7%9F%A9%E9%98%B5%E4%B8%8E%E5%8F%98%E6%8D%A21748265610319.png width = 400></center>
+
+已知：近平面所有点不变，远平面中心点不变
+<center><img alt=picture 2 src=../images/chapter1%20%E7%9F%A9%E9%98%B5%E4%B8%8E%E5%8F%98%E6%8D%A21748266235704.png width=400></center>
+
+$$\frac{y}{y^\prime} = \frac{z}{n}, \frac{x}{x^\prime}=\frac{z}{n}$$
+
+$$
+\begin{matrix}
+     \\
+
+    M_{persp->ortho}
+    \begin{bmatrix}
+        x \\ y \\ z \\ 1
+    \end{bmatrix} =
+    \begin{bmatrix}
+        nx \\ ny \\ ? \\ z
+    \end{bmatrix} \\ \\
+    \begin{cases}
+        M_{persp->ortho} 
+        \begin{bmatrix}
+            x \\ y \\ n \\ 1
+        \end{bmatrix}  =
+        \begin{bmatrix}
+            nx \\ ny \\ n^2 \\ n
+        \end{bmatrix} :近平面不变 \\
+        M_{persp->ortho} 
+        \begin{bmatrix}
+            0 \\ 0 \\ f \\ 1
+        \end{bmatrix} = 
+        \begin{bmatrix}
+            0 \\ 0 \\ f^2 \\ f
+        \end{bmatrix} : 远平面中心点不变
+    \end{cases}\\ \\ \implies
+    M_{persp->ortho} = 
+    \begin{bmatrix}
+        n & 0 & 0 & 0 \\
+        0 & n & 0 & 0\\
+        0 & n+f & -nf & 0\\
+        0 & 0 & 1 & 0
+    \end{bmatrix}
+\end{matrix}
+$$
