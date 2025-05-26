@@ -1,5 +1,6 @@
 # 1. 向量运算
-**点乘**：$\vec{a} \cdot \vec{b}$
+**点乘**： $\vec{a} \cdot \vec{b}$
+
 $$
 \begin{align}
     (x_1,y_1) \cdot (x_2, y_2) = x_1* x_2+y_1*y_2 \\
@@ -7,7 +8,8 @@ $$
 \end{align}
 $$
 
-**叉乘**：$\vec{a} \times \vec{b}$
+**叉乘**： $\vec{a} \times \vec{b}$
+
 $$
 \begin{align}
     ||\vec{a} \times \vec{b}|| = ||\vec{a}||\cdot ||\vec{b}|| \cdot \sin\theta\\
@@ -23,6 +25,7 @@ $$
 
 # 2. 变换矩阵
 ### 2.1 缩放矩阵
+
 $$
 \begin{matrix}
     x^\prime = s_x \cdot x \\
@@ -42,10 +45,12 @@ $$
     \end{bmatrix}
 \end{matrix}
 $$
+
 $s_x为x坐标缩放比例，s_y为y坐标缩放比例$
 
 ### 2.2 对称矩阵
 特殊的缩放矩阵
+
 $$
 \begin{matrix}
     \begin{bmatrix}
@@ -68,15 +73,18 @@ $$
 $$
 
 ### 2.3 切变矩阵
+
 $$
 \begin{bmatrix}
     1 & a \\
     b & 1
 \end{bmatrix}
 $$
+
 <center><img src="../images/2025051400.png" width="250"></center>
 
 ### 2.4 旋转矩阵
+
 $$
 \begin{matrix}
     \begin{bmatrix}
@@ -86,11 +94,13 @@ $$
     \theta 为逆时针旋转的角度
 \end{matrix}
 $$ 
+
 >旋转矩阵为正交矩阵
 
 # 3. 仿射变换
 ### 3.1 齐次坐标
 为了解决平移问题无法使用矩阵表示的问题，引入齐次坐标，这里第三维区别在平移矩阵笔记小结讲解
+
 $$
 \begin{matrix}
     向量：\vec{a} = (x,y,0) \\
@@ -116,6 +126,7 @@ $$
 $$
 
 ### 3.2 平移矩阵
+
 $$
 \begin{matrix}
     \begin{cases}
@@ -158,6 +169,7 @@ $$
 >其余变换对应的仿射变换矩阵只需要在(3,3)处添加1即可，其余位置为0
 
 ### 3.3 组合变换
+
 $$
 \begin{matrix}
     \begin{bmatrix}
@@ -200,6 +212,7 @@ $$
 >将三维坐标投影到二维
 ### 5.1 正交投影（Orthographic）
 将矩形空间缩放到标准正方体中
+
 $$
 \begin{matrix}
     M_{ortho}=
