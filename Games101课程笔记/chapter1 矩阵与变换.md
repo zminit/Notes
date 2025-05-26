@@ -237,12 +237,12 @@ $$
 已知：近平面所有点不变，远平面中心点不变
 <center><img alt=picture 2 src=../images/chapter1%20%E7%9F%A9%E9%98%B5%E4%B8%8E%E5%8F%98%E6%8D%A21748266235704.png width=400></center>
 
-$$\frac{y}{y^\prime} = \frac{z}{n}, \frac{x}{x^\prime}=\frac{z}{n}$$
+$$
+\frac{y}{y^\prime} = \frac{z}{n}, \frac{x}{x^\prime}=\frac{z}{n}
+$$
 
 $$
 \begin{matrix}
-     \\
-
     M_{persp->ortho}
     \begin{bmatrix}
         x \\ y \\ z \\ 1
