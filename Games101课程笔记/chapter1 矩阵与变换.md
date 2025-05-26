@@ -185,3 +185,32 @@ $$
 $$
 >一般物体先线性变换，后平移变换
 
+# 4. 视图变换(View transformation)
+>让物体和摄像机做相反的变换，获得以摄像机为原点的空间坐标
+
+$$
+\begin{matrix}
+    M_{view} = R_{view}T_{view} \\
+    R_{view} = R_{camera}^{-1} = R_{camera}^T\\
+    T_{view} = T_{camera}^{-1}
+\end{matrix}
+$$
+
+# 5. 投影变换(Projection transformation)
+>将三维坐标投影到二维
+### 5.1 正交投影（Orthographic）
+将矩形空间缩放到标准正方体中
+$$
+\begin{matrix}
+    M_{ortho}=
+    \begin{bmatrix}
+        \frac{2}{l} & 0 & 0 & 0\\
+        0 & \frac{2}{b} & 0 & 0 \\
+        0 & 0 & \frac{2}{h} & 0 \\
+        0 & 0 & 0 & 1
+    \end{bmatrix}
+\end{matrix}
+$$
+### 5.2 透视投影（Perspective projection）
+
+
