@@ -161,11 +161,7 @@ $$
         x  \\ y \\ 0
     \end{bmatrix}=
     \begin{bmatrix}
-        x \\
-
-        y \\ 
-        
-        0
+        x \\ y \\ 0
     \end{bmatrix}
 \end{matrix} 
 $$
@@ -231,4 +227,4 @@ $$
 $$
 ### 5.2 透视投影（Perspective projection）
 
-
+<center><img alt=picture 0 src=../images/chapter1%20%E7%9F%A9%E9%98%B5%E4%B8%8E%E5%8F%98%E6%8D%A21748264356044.png width=400></center>
