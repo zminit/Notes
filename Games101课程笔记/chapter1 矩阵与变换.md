@@ -249,7 +249,6 @@ $$
     R_{view} = R_{camera}^{-1} = R_{camera}^T\\
     T_{view} = T_{camera}^{-1} \\ \\
     R_{camera} = R_y(45^{\circ}) \cdot R_z(90^\circ)
-
 \end{matrix}
 $$
 
@@ -342,7 +341,7 @@ $$
 $$
 
 # 6. 视口变换
-将$[-1,1]^2$的平面转换到$[0,width],[0,high]$的屏幕空间中
+将 $[-1,1]^2$ 的平面转换到 $[0,width],[0,high]$ 的屏幕空间中
 
 <center><img alt=图 5 src=../images/chapter1%20%E7%9F%A9%E9%98%B5%E4%B8%8E%E5%8F%98%E6%8D%A21748331662375.png width=500></center>
 
