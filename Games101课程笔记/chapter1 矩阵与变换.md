@@ -40,7 +40,7 @@ $$
         0 & s_y
     \end{bmatrix}
     \begin{bmatrix}
-        x\\
+        x \\
         y
     \end{bmatrix}
 \end{matrix}
@@ -110,18 +110,21 @@ $$
 非齐次坐标平移变换：
 $$
 \begin{bmatrix}
-    x^\prime \\ y^\prime
+    x^\prime \\ 
+    y^\prime
 \end{bmatrix} =
 \begin{bmatrix}
     1 & 0 \\ 
     0 & 1
 \end{bmatrix}
 \begin{bmatrix}
-    x \\ y
+    x \\ 
+    y
 \end{bmatrix}
 +
 \begin{bmatrix}
-    t_x \\ t_y
+    t_x \\ 
+    t_y
 \end{bmatrix}
 $$
 
@@ -143,14 +146,20 @@ $$
         0 & 0 & 1
     \end{bmatrix}
     \begin{bmatrix}
-        x  \\ y \\ 1
+        x  \\ 
+        y \\ 
+        1
     \end{bmatrix}=
     \begin{bmatrix}
-        x+t_x \\ y+t_y \\ 1 
+        x+t_x \\ 
+        y+t_y \\ 
+        1 
     \end{bmatrix} \\ \\
     向量平移：
     \begin{bmatrix}
-        x^\prime \\ y^\prime \\ 0
+        x^\prime \\ 
+        y^\prime \\ 
+        0
     \end{bmatrix} = 
     \begin{bmatrix}
         1 & 0 & t_x \\
@@ -158,10 +167,14 @@ $$
         0 & 0 & 1
     \end{bmatrix}
     \begin{bmatrix}
-        x  \\ y \\ 0
+        x  \\ 
+        y \\ 
+        0
     \end{bmatrix}=
     \begin{bmatrix}
-        x \\ y \\ 0
+        x \\ 
+        y \\ 
+        0
     \end{bmatrix}
 \end{matrix} 
 $$
@@ -192,7 +205,10 @@ $$
         0 & 0 &0 &1
     \end{bmatrix}
     \begin{bmatrix}
-        x \\ y \\ z \\ 0 or 1
+        x \\ 
+        y \\ 
+        z \\ 
+        0 or 1
     \end{bmatrix}
 \end{matrix}
 $$
@@ -245,27 +261,46 @@ $$
 \begin{matrix}
     M_{persp->ortho}
     \begin{bmatrix}
-        x \\ y \\ z \\ 1
+        x \\ 
+        y \\ 
+        z \\ 
+        1
     \end{bmatrix} =
     \begin{bmatrix}
-        nx \\ ny \\ ? \\ z
+        nx \\ 
+        ny \\ 
+        ? \\ 
+        z
     \end{bmatrix} \\ \\
     \begin{cases}
         M_{persp->ortho} 
         \begin{bmatrix}
-            x \\ y \\ n \\ 1
+            x \\ 
+            y \\ 
+            n \\ 
+            1
         \end{bmatrix}  =
         \begin{bmatrix}
-            nx \\ ny \\ n^2 \\ n
+            nx \\ 
+            ny \\ 
+            n^2 \\ 
+            n
         \end{bmatrix} :近平面不变 \\
         M_{persp->ortho} 
         \begin{bmatrix}
-            0 \\ 0 \\ f \\ 1
+            0 \\ 
+            0 \\ 
+            f \\ 
+            1
         \end{bmatrix} = 
         \begin{bmatrix}
-            0 \\ 0 \\ f^2 \\ f
+            0 \\ 
+            0 \\ 
+            f^2 \\ 
+            f
         \end{bmatrix} : 远平面中心点不变
-    \end{cases}\\ \\ \implies
+    \end{cases}\\ \\ 
+    \implies
     M_{persp->ortho} = 
     \begin{bmatrix}
         n & 0 & 0 & 0 \\
