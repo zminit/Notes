@@ -4,7 +4,7 @@
 $$
 \begin{align}
     (x_1,y_1) \cdot (x_2, y_2) = x_1* x_2+y_1*y_2 \\
-    (x_1,y_1) \cdot (x_2, y_2) = ||\vec{a}|| \cdot ||\vec{b}|| \cdot \cos\theta
+    (x_1,y_1) \cdot (x_2, y_2) = \lVert\vec{a}\rVert \cdot \lVert\vec{b}\rVert \cdot \cos\theta
 \end{align}
 $$
 
@@ -12,7 +12,7 @@ $$
 
 $$
 \begin{align}
-    ||\vec{a} \times \vec{b}|| = ||\vec{a}||\cdot ||\vec{b}|| \cdot \sin\theta\\
+    \lVert\vec{a} \times \vec{b}\rVert = \lVert\vec{a}\rVert\cdot \lVert\vec{b}\rVert \cdot \sin\theta\\
     (x_1, y_1) \times (x_2, y_2) = 
     \begin{vmatrix}
         \vec{i} & \vec{j} & \vec{k} \\
@@ -91,7 +91,28 @@ $$
     \cos\theta & -\sin\theta \\
     \sin\theta & \cos\theta
     \end{bmatrix} \\
-    \theta 为逆时针旋转的角度
+    \theta 为逆时针旋转的角度 \\
+    R_x(\alpha) = 
+    \begin{bmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & \cos\alpha & -\sin\alpha & 0 \\
+        0 & \sin\alpha & \cos\alpha & 0 \\
+        0 & 0 & 0 & 1
+    \end{bmatrix} \\ \\
+    R_y(\alpha) = 
+    \begin{bmatrix}
+        \cos\alpha & 0 & \sin\alpha & 0 \\
+        0 & 1 & 0 & 0 \\
+        -\sin\alpha & 0 & \cos\alpha & 0 \\
+        0 & 0 & 0 & 1
+    \end{bmatrix} \\ \\
+    R_z(\alpha) = 
+    \begin{bmatrix}
+        \cos\alpha & -\sin\alpha & 0 & 0 \\
+        \sin\alpha & \cos\alpha & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1
+    \end{bmatrix} \\
 \end{matrix}
 $$ 
 
@@ -217,11 +238,18 @@ $$
 # 4. 视图变换(View transformation)
 >让物体和摄像机做相反的变换，获得以摄像机为原点的空间坐标
 
+<center><img alt=图 3 src=../images/chapter1%20%E7%9F%A9%E9%98%B5%E4%B8%8E%E5%8F%98%E6%8D%A21748331041306.png width=500></center>
+
+
 $$
 \begin{matrix}
+    A^\prime_{pos} = M_{view}A_{pos}    \\
+    B^\prime_{pos} = M_{view}B_{pos}    \\
     M_{view} = R_{view}T_{view} \\
     R_{view} = R_{camera}^{-1} = R_{camera}^T\\
-    T_{view} = T_{camera}^{-1}
+    T_{view} = T_{camera}^{-1} \\ \\
+    R_{camera} = R_y(45^{\circ}) \cdot R_z(90^\circ)
+
 \end{matrix}
 $$
 
@@ -232,6 +260,8 @@ $$M_{proj} = M_{ortho} M_{persp}$$
 
 ### 5.1 正交投影（Orthographic）
 将矩形空间缩放到标准正方体中
+
+<center><img alt=图 4 src=../images/chapter1%20%E7%9F%A9%E9%98%B5%E4%B8%8E%E5%8F%98%E6%8D%A21748331532177.png width=500></center>
 
 $$
 \begin{matrix}
@@ -309,4 +339,19 @@ $$
         0 & 0 & 1 & 0
     \end{bmatrix}
 \end{matrix}
+$$
+
+# 6. 视口变换
+将$[-1,1]^2$的平面转换到$[0,width],[0,high]$的屏幕空间中
+
+<center><img alt=图 5 src=../images/chapter1%20%E7%9F%A9%E9%98%B5%E4%B8%8E%E5%8F%98%E6%8D%A21748331662375.png width=500></center>
+
+$$
+M_{viewport}=
+\begin{bmatrix}
+    \frac{width}{2} & 0 & 0 & \frac{width}{2} \\
+    0 & \frac{high}{2} & 0 & \frac{high}{2} \\
+    0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 1 \\
+\end{bmatrix}
 $$
