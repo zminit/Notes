@@ -6,7 +6,7 @@
 >着色点漫反射强度和与光源的距离以及入射角有关，与观察者无关
 
 $$
-L_d = k_d(I/r^2)\max(0,\bold{n}\cdot\bold{l}) \\
+L_d = k_d(I/r^2)\max(0,\boldsymbol{n}\cdot\boldsymbol{l}) \\
 $$
 $$
 \begin{align*}
@@ -14,8 +14,8 @@ $$
     & k_d:反射系数 \\
     & I:距光源单位距离的光照强度 \\
     & r:着色点距光源距离 \\
-    & \bold{n}:着色点法向量（单位向量） \\
-    & \bold{l}:着色点入射光线（单位向量）
+    & \boldsymbol{n}:着色点法向量（单位向量） \\
+    & \boldsymbol{l}:着色点入射光线（单位向量）
 \end{align*}
 $$
 
@@ -25,16 +25,16 @@ $$
 
 $$
 \begin{matrix}
-   L_s = k_s(I/r^2)\max(0,\cos\theta)^p = k_s(I/r^2)\max(0,\bold{n}\cdot\bold{h})^p \\
-   \bold{h} = bisector(\bold{v},\bold{l}) = \frac{\bold{v} + \bold{l}}{\lVert\bold{v}+\bold{l}\rVert} 
+   L_s = k_s(I/r^2)\max(0,\cos\theta)^p = k_s(I/r^2)\max(0,\boldsymbol{n}\cdot\boldsymbol{h})^p \\
+   \boldsymbol{h} = bisector(\boldsymbol{v},\boldsymbol{l}) = \frac{\boldsymbol{v} + \boldsymbol{l}}{\lVert\boldsymbol{v}+\boldsymbol{l}\rVert} 
 \end{matrix}
 $$
 $$
 \begin{align*}
     & L_s:反射光强度 \\
     & k_s:反射系数 \\
-    & \bold{h}:半程向量:(观察角度+入射角度) /2 \\
-    & \bold{v}:观察向量
+    & \boldsymbol{h}:半程向量:(观察角度+入射角度) /2 \\
+    & \boldsymbol{v}:观察向量
 \end{align*}
 $$
 
@@ -84,3 +84,39 @@ $$
 
 
 # 4. 纹理映射（Texture Mapping）
+
+### 4.1 重心插值
+>逐顶点着色中处理三角形中间的着色问题
+
+<center><img alt=图 5 src=../images/chapter3%20%E7%9D%80%E8%89%B21748507808637.png width=500></center>
+
+>与三角形共面的点坐标都可以表示为三个顶点的线性组合
+>
+>**特别的**：当线性组合系数非负时，该点一定在三角形内
+
+
+**重心坐标**： $点D与\triangle ABC共面，D表示为D = \alpha A + \beta B + \gamma C, 则D对应的\boldsymbol{重心坐标}即(\alpha,\beta,\gamma)$
+
+<center><img alt=图 6 src=../images/chapter3%20%E7%9D%80%E8%89%B21748508492433.png width=500></center>
+
+>可以通过计算三角形的面积比计算重心坐标，三角形面积等于边向量叉乘模/2
+
+```mermaid
+graph LR
+    A[坐标]--->B[重心坐标]--->C[插值]
+```
+
+$$
+V_D = \alpha V_A + \beta V_B + \gamma V_C
+$$
+
+### 4.2 双线性插值
+
+>像素精度比纹理精度高时，解决走样的问题
+
+<center><img alt=图 7 src=../images/chapter3%20%E7%9D%80%E8%89%B21748509749288.png></center>
+
+红点为像素点(Pixel)，方框为纹理元素(Texttel)
+
+### 4.3 Mipmap
+>解决纹理精度高于像素精度导致的走样问题，快速、不准确、方形的区域查询
