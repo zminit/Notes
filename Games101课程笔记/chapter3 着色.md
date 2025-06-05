@@ -120,3 +120,16 @@ $$
 
 ### 4.3 Mipmap
 >解决纹理精度高于像素精度导致的走样问题，快速、不准确、方形的区域查询
+
+1. 纹理图像预处理：
+<center><img alt=picture 2 src=../images/chapter3%20%E7%9D%80%E8%89%B21749137747700.png width=400></center>
+
+<center><img alt=picture 1 src=../images/chapter3%20%E7%9D%80%E8%89%B21749137722013.png width=500></center>
+
+2. 计算层数
+<center><img alt=picture 0 src=../images/chapter3%20%E7%9D%80%E8%89%B21749137665704.png width=500></center>
+
+3. 三线性插值
+
+>对于层数非整数的结果在邻近两层进行插值后再进行一次插值
+<center><img alt=picture 3 src=../images/chapter3%20%E7%9D%80%E8%89%B21749137900164.png width=500></center>
