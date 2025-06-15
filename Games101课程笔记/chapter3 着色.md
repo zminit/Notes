@@ -133,3 +133,27 @@ $$
 
 >对于层数非整数的结果在邻近两层进行插值后再进行一次插值
 <center><img alt=picture 3 src=../images/chapter3%20%E7%9D%80%E8%89%B21749137900164.png width=500></center>
+
+### 4.4 其他纹理
+
+**环境光映射**
+<center><img alt=图 4 src=../images/chapter3%20%E7%9D%80%E8%89%B21750004201714.png ></center>
+环境光贴图：将环境光信息作为纹理
+
+<center><img alt=图 5 src=../images/chapter3%20%E7%9D%80%E8%89%B21750004300798.png ></center>
+立方体映射：将环境光信息存在立方体表面
+
+**凹凸纹理**
+
+<center><img alt=图 6 src=../images/chapter3%20%E7%9D%80%E8%89%B21750004530252.png ></center>
+法线贴图：在不改变模型的情况下改变模型表面的法线
+<center><img alt=图 7 src=../images/chapter3%20%E7%9D%80%E8%89%B21750004582782.png ></center>
+
+>三维法线贴图法线计算方法
+
+**位移贴图**
+<center><img alt=图 8 src=../images/chapter3%20%E7%9D%80%E8%89%B21750004657239.png ></center>
+
+左：法线贴图，右：位移贴图
+
+位移贴图：改变模型顶点位置实现
