@@ -30,8 +30,8 @@
 3. 贝塞尔曲线点不会超出控制点凸包的范围
 4. 4个控制点的贝塞尔曲线： $b^\prime(0)=3(b_1-b_0),b^\prime(1)=3(b_3-b_2)$
 
-# 2.2 曲面
-### 贝塞尔曲面
+# 3. 曲面
+### 3.1 贝塞尔曲面
 贝塞尔曲面是由多条贝塞尔曲线上的点再次进行贝塞尔计算得到
 
 1. 先画出一个维度上的所有曲线
@@ -39,3 +39,50 @@
 
 2. 根据不同曲线同一个时间t的点计算第二个维度的贝塞尔曲线
 <center><img alt=图 7 src=../images/chapter4%20%E5%87%A0%E4%BD%951750012452393.png ></center>
+
+### 3.2 曲面细分
+
+1. **Loop细分**
+
+>生成新点
+<center><img alt=图 0 src=../images/chapter4%20%E5%87%A0%E4%BD%951750064152561.png width=400></center>
+
+>旧点位移
+<center><img alt=图 1 src=../images/chapter4%20%E5%87%A0%E4%BD%951750064224077.png width=400></center>
+
+2. **Catmull-Clark细分**
+
+>生成中心点,
+>在网格中心生成中心点
+
+奇异点：度非4的点
+
+
+
+<center><img alt=图 2 src=../images/chapter4%20%E5%87%A0%E4%BD%951750079410498.png width=400></center>
+
+>连接中心点与临近的边中心点
+<center><img alt=图 3 src=../images/chapter4%20%E5%87%A0%E4%BD%951750080906849.png width=400></center>
+
+>改变各点位置
+
+<center><img alt=图 4 src=../images/chapter4%20%E5%87%A0%E4%BD%951750081196804.png width=400></center>
+
+**Catmull-Clark细分性质**：
+1. 经过一次细分后奇异点数量不变，即一次细分后网格只剩四边形
+
+### 3.3 曲面简化
+
+**边坍缩算法**
+<center><img alt=图 5 src=../images/chapter4%20%E5%87%A0%E4%BD%951750082141685.png width=400></center>
+
+通过将一些边端点聚合到一起实现，难点在于选择坍缩的边
+
+**二次误差测量**
+<center><img alt=图 6 src=../images/chapter4%20%E5%87%A0%E4%BD%951750082232296.png width=400></center>
+
+>计算坍缩后的顶点到被坍缩面的平方距离和，即为该次坍缩的**二次误差**
+
+选择坍缩的边可以通过堆来计算
+
+通过局部求最优解来进行解决整个模型的简化
