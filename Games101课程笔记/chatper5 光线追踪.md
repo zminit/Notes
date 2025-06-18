@@ -48,7 +48,7 @@
 
     和三角形共面的点的重心坐标非负，同时在三角形内的点重心坐标和为1
 
-4. **包围盒求交**
+4. **包围盒求交（AABBs）**
 
     为了简化计算，使用**轴对齐立方体包围盒**代替物体进行计算
 
@@ -70,4 +70,82 @@
     >
     >下：光线与包围盒对面求交（垂直于x轴）
 
-     
+### 2.3 包围盒内部处理
+
+1. **网格化包围盒**
+    
+    1. 预处理：将包围盒均匀划分为小包围盒，将物体表面所在的小包围盒标记
+    <center><img alt=图 0 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750254835596.png width=400></center>
+
+    2. 计算光路：计算光会经过的包围盒，以及计算包围盒是否为物体表面
+    <center><img alt=图 1 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750254913968.png width=400></center>
+
+    >栅格法适合均匀分布的物体
+
+2. **空间划分**
+    <center><img alt=图 2 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750255131522.png width=400></center>
+    
+    空间划分有多种方法：八叉树、KD树、BSP树
+    
+    八叉树：每次递归将一个包围盒分为2^n个子包围盒，n为空间维度
+
+    KD树：每次递归将包围盒沿轴向分为两份
+
+    BSP树：每次递归将包围盒沿特定方向分为两份
+
+
+    **KD-Tree**:
+    <center><img alt=图 3 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750255430231.png  width=400></center>
+
+    1. 将大包围盒分为递归分为两部分，知道某一部分符合特定条件为止（如：最多有n个三角形）
+    2. 在叶子节点储存物体或三角形
+    3. 计算光路与节点包围盒相交的情况，如果是非叶子节点则继续计算子节点，若是叶子节点，则相交时叶子节点包围盒内物体均与光线相交
+    
+    >空间划分会导致一个物体在两个划分中的问题
+
+### 2.4 物体划分
+
+<center><img alt=图 4 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750263317166.png width=400></center>
+
+>**BVH**:递归将物体分为两堆，求包围盒
+
+# 3. 辐射度量学
+
+基础概念：
+- **Radiant Flux**
+    <center><img alt=图 5 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750263969691.png width=400></center>
+
+    >单位时间内辐射的光子数,单位：流明
+
+- **Radiant Intensity**
+    <center><img alt=图 8 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750269043774.png width=400></center>
+
+    >特定方向上的光线强度
+    
+    **Radiant Intensity**:
+    
+    <center><img alt=图 9 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750269940054.png width=500></center>
+    
+    >辐射能量/单位立体角
+    
+    **立体角：**
+    <center><img alt=图 10 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750270010477.png width=400></center>
+        
+        弧度=弧长/半径
+
+        立体角度=面积/半径^2
+
+    <center><img alt=图 11 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750270156204.png width=400></center>
+    
+    >立体角微分
+
+    **Irradiance**:接受量
+    
+
+
+    **Radiance**:辐射
+
+
+
+
+    
