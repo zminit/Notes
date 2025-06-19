@@ -8,7 +8,7 @@
 
 # 2. 光线追踪
 
-### 2.1 光线追踪
+### 2.1 光线追踪（Whitted-Style Ray Tracing）
 从摄像机发射射线，计算折射、反射到达物体表面的能量，同时计算光源是否对该点可见，最终得到该处的光线信息
 
 <center><img alt=图 1 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750158820164.png></center>
@@ -139,13 +139,110 @@
     
     >立体角微分
 
-    **Irradiance**:接受量
+    **Irradiance**:
     
+    <center><img alt=图 5 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750319632149.png width=400></center>
 
+    <center><img alt=图 6 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750319960922.png width=400></center>
+
+    >单位面积上的辐射量随距离衰减
+
+    <center><img alt=图 7 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750320090564.png width=400></center>
+
+    >不同夹角物体表面吸收光照情况
 
     **Radiance**:辐射
 
+    <center><img alt=图 8 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750324058524.png width=400></center>
 
+    <center><img alt=图 9 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750324435601.png width=300></center>
 
+    <center><img alt=图 10 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750324506726.png width=300></center>
 
+    >单位角单位面积上的辐射量
+
+    <center><img alt=图 11 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750324573015.png width=400></center>
     
+    >radiance ->irradiance
+
+
+# 4. BRDF
+
+### 4.1 反射方程
+<center><img alt=图 12 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750324942997.png width=400></center>
+
+<center><img alt=图 13 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750325087555.png width=400></center>
+
+>反射方程
+
+### 4.2 渲染方程
+
+<center><img alt=图 14 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750325211607.png width=400></center>
+
+>渲染方程加入了物体自发光的情况， n为法线
+
+<center><img alt=图 15 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750325312553.png width=400></center>
+
+>点光源👆
+
+<center><img alt=图 16 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750325358964.png width=400></center>
+
+>面光源👆
+
+# 5. 路径追踪
+
+### 5.1 蒙特卡洛积分
+
+<center><img alt=图 17 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750338662691.png width=500></center>
+
+<center><img alt=图 18 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750338738091.png width=400></center>
+
+>对积分函数进行采样求平均得到积分数值近似解
+
+<center><img alt=图 19 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750338788415.png width=400></center>
+
+>蒙特卡洛积分一般形式
+
+
+### 5.2 路径积分
+- 基本操作：
+    <center><img alt=图 20 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750339737513.png width=400></center>
+
+    >递归在物体表面点对应的半球面上随机采样求平均值
+
+- 指数爆炸：
+    <center><img alt=图 21 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750339818278.png width=500></center>
+
+    >过大的采样数会导致指数爆炸，因此每次只随机取一条采样光线
+
+    <center><img alt=图 22 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750339901352.png width=400></center>
+
+    **路径追踪**：从摄影机出发穿过像素辐射多条光线到物体表面，求所以路径的评价值得到像素光照信息
+
+- 光线衰减：
+
+    <center><img alt=图 23 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750340099633.png width=400></center>
+
+    >**RR**：设置辐射概率来实现光线能量衰减，p概率辐射`Lo/p`强度的光线，`1-p`概率不辐射，期望仍然为`Lo`,但大概率会在弹射多次后消失
+
+
+- 采样效率低：
+    <center><img alt=图 24 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750340358088.png width=500></center>
+
+    >大部分采样光线无法有效到达光源，造成效率低，对直接光线进行优化
+
+    <center><img alt=图 25 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750340485176.png width=500></center>
+
+    >直接光线针对光源面积进行积分，而不是通过随机采样求平均
+
+    <center><img alt=图 26 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750340547529.png width=400></center>
+
+    >修改后的渲染方程👆（直接光照部分）
+
+    <center><img alt=图 27 src=../images/chatper5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA1750340601541.png width=400></center>
+
+    >直接光线对光源面积求积分，间接光线依然使用蒙特卡洛积分和RR方法求
+    
+**注意**：
+- 路径追踪处理点光源非常困难，建议将点光源改为较小的面光源
+- 直接光线计算时要注意光源的遮挡关系
