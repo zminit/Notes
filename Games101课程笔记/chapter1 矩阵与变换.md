@@ -354,3 +354,5 @@ M_{viewport}=
     0 & 0 & 0 & 1 \\
 \end{bmatrix}
 $$
+
+>**MVP变换矩阵**：模型变换（Model），视图变换（View），投影变换（Perspective）

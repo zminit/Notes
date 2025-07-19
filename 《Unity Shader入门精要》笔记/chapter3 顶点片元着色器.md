@@ -41,3 +41,35 @@ CG/HLSL函数格式：
 - **TEXCOORD3**
 - **TEXCOORD4**
 - **COLOR**
+
+>在每次DrawCall时，模型的`Mesh Render`组件会根据顶点着色器函数的输入结果填入对应的数据
+
+```shaderLab
+#pragma vertex vert
+#pragma fragment frag
+
+struct a2v{
+    float4 vertex : POSITION;
+    float3 normal : NORMAL;
+    float4 texcoord : TEXCOORD0;
+};
+
+struct v2f{
+    float4 pos : SV_POSITION;
+    float3 color : COLOR0;
+};
+
+float4 vert(a2v v) : SV_POSITION{
+    v2f o;
+    ...
+    return o;
+}
+
+float4 frag(v2f i) : SV_Target{
+    ...
+    return fixed4(i.color, 1.0);
+}
+```
+
+样例中：片元着色函数`frag`的参数输入自顶点着色函数`vert`，`Mesh Render`组件会自动将所需数据填入`vert`输入参数`a2v`结构中
+
