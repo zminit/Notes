@@ -34,6 +34,9 @@ $$
 
 
 #### 1.2.1 逐顶点计算diffuse
+
+<center><img alt=图 0 src=../images/chapter4%20%E5%85%89%E7%85%A7shader1757167398770.png ></center>
+
 ```shaderlab
 Shader "Diffuse Vertex-Level"{
     Properties{
@@ -91,6 +94,9 @@ Shader "Diffuse Vertex-Level"{
 
 
 #### 1.2.2 逐像素漫反射
+
+<center><img alt=图 1 src=../images/chapter4%20%E5%85%89%E7%85%A7shader1757167431800.png ></center>
+
 ```shaderlab
 Shader "Diffues Pixel-Level"{
     Properties{
@@ -259,6 +265,6 @@ Shader "Specular Pixel-Level"{
 }
 
 ```
-1. **shader中将向量储存为行向量**，所以和矩阵相乘时是向量×矩阵，而**坐标被储存为列向量**，因此坐标变换时是变换矩阵×坐标
+1. **shader中将float3等类似的数据储存为列向量**，因此变换时是变换矩阵×坐标，即mul(matrix, float3)
 2. WorldSpaceViewDir(float4`模型空间坐标`) ，UnityWorldSpaceViewDir(float3`世界空间坐标`)
 
