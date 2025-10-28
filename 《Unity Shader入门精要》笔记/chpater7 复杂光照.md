@@ -15,3 +15,6 @@ Tags {"LightMode"="Forwardbase"}
 一般用于处理多个光源重叠空间的渲染，不对每个光源执行pass,使用G缓冲后只执行一次pass。
 
 ## 1.1 前向渲染
+前向渲染有两种Pass：**ForwardBase**, **ForwardAdd**
+
+Base Pass无论有多少光源，只执行一次
