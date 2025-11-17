@@ -149,3 +149,20 @@ Shader "Normal Map In Tangent Space"{
 }
 ```
 
+# 3. 环境映射
+
+<center><img alt=图 3 src=../images/chapter5%20%E7%BA%B9%E7%90%86%E8%B4%B4%E5%9B%BE1763357610240.png ></center>
+
+>使用立方体纹理将某点附近的环境光写入纹理，达到模拟金属反射的效果。
+
+1. 使用脚本
+```CSharp
+    void GenerateCubemap()
+    {
+        GameObject go = new GameObject("CubemapCamera");
+        go.AddComponent<Camera>();
+        go.transform.position = renderFromPosition.position;
+        go.GetComponent<Camera>().RenderToCubemap(cubemap);
+        DestroyImmediate(go);
+    }
+```
