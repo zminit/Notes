@@ -151,11 +151,13 @@ Shader "Normal Map In Tangent Space"{
 
 # 3. 环境映射
 
+## 3.1 镜面反射
+
 <center><img alt=图 3 src=../images/chapter5%20%E7%BA%B9%E7%90%86%E8%B4%B4%E5%9B%BE1763357610240.png ></center>
 
 >使用立方体纹理将某点附近的环境光写入纹理，达到模拟金属反射的效果。
 
-1. 使用脚本
+1. **使用脚本**
 ```CSharp
     void GenerateCubemap()
     {
@@ -165,4 +167,62 @@ Shader "Normal Map In Tangent Space"{
         go.GetComponent<Camera>().RenderToCubemap(cubemap);
         DestroyImmediate(go);
     }
+```
+
+2. **创建纹理**
+>Create -> Legacy -> Cubemap
+
+3. **创建shader**
+
+使用Cubemap采样代替反射，并在计算颜色时使用lerp代替简单相加
+
+```GLSL
+Properties{
+    ...
+    _Cubemap ("Reflection Cubemap", Cube) = "_Skybox"{}
+    _ReflectionAmount ("Reflection Amount", Range(0, 1)) = 1
+    _ReflectionColor ("Reflcetion Color", Color) = (1,1,1,1)
+}
+
+#include "UnityCG.cginc"
+
+v2f vert(a2v v){
+    ...
+    o.worldRefl = reflect(-o.worldViewDir, o.worldNormal);
+}
+
+fixed4 frag(v2f i){
+    ...
+    fixed3 reflection = texCUBE(_Cubemap, i.worldRefl).rgb * _ReflectColor.rgb;
+    ...
+    fixed3 color = ambient + lerp(diffuse, reflection, _ReflectAmount) * atten; 
+}
+```
+
+## 3.2 折射
+
+使用refract函数实现折射采样
+
+```GLSL
+Properties{
+    ...
+    _Cubemap ("Refraction Cubemap", Cube) = "_Skybox" {}
+    _RefractionAmount ("Refraction Amount", Range(0, 1)) = 1
+    _RefractionRatio ("Refraction Ration", Range(0.1, 1)) = 0.5 //折射率比值
+    _RefractionColor ("Refraction Color", Color) = (1,1,1,1)
+}
+
+#include "UnityCG.cginc"
+
+v2f vert(a2v v){
+    ...
+    o.worldRefract = refract(-o.worldVierDir, o,worldNormal, _RefractionRatio);
+    ...
+}
+
+fixed4 frag(v2f i) : SV_Target{
+    ...
+    fixed3 reflection = texCUBE(_Cubemap, i.worldRefract).rgb * _RefractionColor.rgb;
+    ...
+}
 ```
