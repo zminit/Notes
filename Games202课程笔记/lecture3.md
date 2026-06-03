@@ -32,7 +32,7 @@ $$
 - 在光源视角渲染一张纹理，保存场景中物体的深度或者距离信息。
 - Shadow mapping 可以保存线性距离，也可以保存mvp转换后的z坐标
 - 在摄像机视角渲染时，计算屏幕片元采样点到光源的距离，和对应的shadow map纹理单元作比较比较。
-- 如果屏幕片元采样点p到光源的距离大于shadow map纹理单元保存的值，代表没有被遮挡，否则有阴影。
+- 如果屏幕片元采样点p到光源的距离小于等于shadow map纹理单元保存的值，代表没有被遮挡，否则有阴影。
 
 **缺点**
 
@@ -57,12 +57,13 @@ shadow mapping中，阴影计算就是渲染方程近似中的visibility部分�
 
 > PCF技术用于shadow mapping抗锯齿
 
-
-<center><img alt=图 2 src=../images/lecture31780147044883.png></center>
+<center><img alt=图 9 src=../images/lecture31780382724727.png></center>
 
 **PCF原理**：
 
-在shadow map上找到屏幕片元采样点对应的纹理单元，取周围位置的深度值（如图中取3x3的空间），如果深度大于采样点则为1，小于则为0，最后计算均值，得到该点的 $\text{visiblity}$ 。
+在shadow map上找到屏幕片元采样点对应的纹理单元，取周围位置的深度值（如图中取3x3的空间），如果深度小于采样点则为1，大于等于则为0，最后计算均值，得到该点的 $\text{visiblity}$ 。
+
+>这里有一个小问题：采样点对应的纹理单元深度不一定就是该采样点到光源的深度。
 
 ## PCSS(Percentage Closer Soft Shadows)
 
@@ -86,7 +87,77 @@ $$W_{penumbra} = \frac{(d_{receiver} - d_{blocker}) * W_{Light}}{d_{blocker}}$$
 
 - 以光源中心为观察视角生成shadow map。
 - 在shadow map上计算一个blocker查找平面。
-- 找到所有的blocker纹理单元（纹理值大于点p到光源的距离），计算均值作为 $d_{blocker}$。
+- 找到所有的blocker纹理单元（纹理值小于点p到光源的距离），计算均值作为 $d_{blocker}$。
 - 计算 $W_{penumbra}$ 和shadow map采样半径。
 - 以屏幕片元对应到shadow map的uv位置为中心进行采样。
 - 计算阴影强度。
+
+**原理解析**
+
+$$V(x) = \sum_{q\in \mathcal{N}(p)} w(p,q)\cdot \chi^{+}[D_{\text{SM}}(q)-D_{\text{scene}}(x)]$$
+- $V(x):x处的visibility$。
+- $p:x对应的shadow map上的uv坐标点。$
+- $q:p周围的临接空间的采样点。$
+- $w:权值。$
+- $\chi^{+}(x):x<0时为1，x>=0为0。$
+- $D_{\text{SM}}:到光源中心的距离。$
+- $D_{\text{scene}}:场景点到光源的距离。$
+
+## VSSM(Variance Soft Shadow Mapping)
+
+**Key Idea**
+
+在计算阴影强度时PCF效率太低，使用正态分布/高斯分布代替采样，将问题转换为**快速求采样去均值和方差**。
+
+- 使用`Mipmap`/`SAT`快速求均值。
+- 使用 $V(x)=E^2(x)-E(x^2)$ 求方差。
+- 在shdow map不同通道存储：$x$ , $x^2$ 。
+
+**CDF/Err function/切比雪夫不等式**
+
+- 使用CDF/Err function求解PDF积分。
+
+<center><img alt=图 10 src=../images/lecture31780390601934.png></center>
+
+- 使用切比雪夫不等式求PDF积分：
+$$P(x>t) \leq \frac{\sigma^2}{\sigma^2 + (t-\mu)^2}$$
+
+**逻辑过程**
+
+- 光源空间计算shadowmap（包括深度和深度的平方）+ mipmap/SAT。
+- Blocker search(计算遮挡物平均深度)。
+  1. 找到blocker search平面（见PCSS）。
+    <center><img alt=图 12 src=../images/lecture31780401917668.png></center>
+
+    $$\frac{N_1}{N}z_{unocc} + \frac{N_2}{N}z_{occ}=z_{avg}$$
+
+  2. 计算平均深度（如上图和公式），计算 $z_{occ}$ 。$z_{avg}$ 从mipmap/SAT中计算；$\frac{N_1}{N},\frac{N_2}{N}$ 使用切比雪夫不等式计算；$z_{unocc}$ 直接使用采样点到光源的深度。
+
+- 计算软阴影区域半径（ $W_{penumbra}$ ）。
+- 再对shadow map进行PCF(切比雪夫不等式加速)计算阴影强度。
+
+**缺点**
+
+- 阴影接受面需要是平面。
+- 每次光源变化，物体移动都需要进行一次mipmap。
+- shadow map分布和正态分布差异较大时会出现异常亮区。
+
+**进阶方案 Moment Shadow mapping**
+
+<center><img alt=图 13 src=../images/lecture31780487659089.png></center>
+
+用 $z,z^2,z^3,z^4$ 能更好地拟合真实分布。
+
+
+
+# f 附录
+
+## f1 SAT
+
+<center><img alt=图 14 src=../images/lecture31780487789243.png></center>
+
+> 二维前缀和
+
+## f2 Moment Shadow Mapping
+
+MSM目前使用较少，这里不做研究。
