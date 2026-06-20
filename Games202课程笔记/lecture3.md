@@ -1,6 +1,6 @@
-# 实时阴影
+# 1. 实时阴影
 
-## 渲染方程近似
+## 1.1 渲染方程近似
 
 $$
 \int_{\Omega}f(x)g(x)\, dx \approx \frac{\int_{\Omega} f(x)\,dx}{\int_{\Omega}\,dx}\int_{\Omega}g(x)\,dx
@@ -23,7 +23,7 @@ $$
 - 对`diffuse bsdf`,`constant radiance area lighting`,shading部分为smooth，该近似准确。
 - **特别的**，BRDF非smooth，该近似不准确，因此不适合使用Shadow mapping。
 
-## Shadow mapping
+## 1.2 Shadow mapping
 
 <center><img alt=图 1 src=../images/lecture31780133378352.png></center>
 
@@ -53,7 +53,7 @@ $$
 shadow mapping中，阴影计算就是渲染方程近似中的visibility部分，光源空间片元覆盖的场景区域越小，则准确度越高，也即，shadow map分辨率越高，准确度越高，条纹越细。
 
 
-## PCF(Percentage Closer Filtering)
+## 1.3 PCF(Percentage Closer Filtering)
 
 > PCF技术用于shadow mapping抗锯齿
 
@@ -65,7 +65,7 @@ shadow mapping中，阴影计算就是渲染方程近似中的visibility部分�
 
 >这里有一个小问题：采样点对应的纹理单元深度不一定就是该采样点到光源的深度。
 
-## PCSS(Percentage Closer Soft Shadows)
+## 1.4 PCSS(Percentage Closer Soft Shadows)
 
 <center><img alt=图 4 src=../images/lecture31780206178988.png></center>
 
@@ -103,7 +103,7 @@ $$V(x) = \sum_{q\in \mathcal{N}(p)} w(p,q)\cdot \chi^{+}[D_{\text{SM}}(q)-D_{\te
 - $D_{\text{SM}}:到光源中心的距离。$
 - $D_{\text{scene}}:场景点到光源的距离。$
 
-## VSSM(Variance Soft Shadow Mapping)
+## 1.5 VSSM(Variance Soft Shadow Mapping)
 
 **Key Idea**
 
