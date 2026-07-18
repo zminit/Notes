@@ -200,6 +200,8 @@ $$\text{SSIM}(x, y) = \frac{(2\mu_x\mu_y + C_1)(2\sigma_{xy} + C_2)}{(\mu_x^2+\m
 
 **高斯中心点克隆、分裂与删除**
 
+<center><img alt=图 19 src=../images/3DGS1784265390705.png width=600></center>
+
 >经典3DGS会设置一个增密周期，经过一个loss计算和反向传播的周期后（T轮），根据高斯中心点屏幕空间坐标梯度决定分裂与克隆
 
 $$\frac{\partial \mathcal{L}}{\partial \mu_{2D,i}}$$
@@ -325,4 +327,22 @@ $$\mathcal{L}_{normal-consistency} = \sum_{i} w_i(1-\mathbf{n}_i^T N_D) $$
 **2DGS在透明和半透明物体的拟合上稍弱于3DGS，但经典3DGS效果也不是很理想**
 
 # 3. 4DGS
+
+4DGS使用MLP拟合高斯椭球参数随时间的变化
+
+$$\Delta G = (\Delta \mu, \Delta \mathbf{q}, \Delta \mathbf{s})$$
+
+- $\Delta \mu = (\Delta \mu_x, \Delta \mu_y, \Delta \mu_z)$：高斯中心变化    
+- $\Delta \mathbf{q} = (\Delta x, \Delta y, \Delta z, \Delta w)$：高斯椭球方向变化
+- $\Delta \mathbf{s} = (\Delta s_x, \Delta s_y, \Delta s_z)$：高斯椭球缩放系数变化
+
+<center><img alt=图 20 src=../images/3DGS1784295494070.png width=400></img></center>
+
+>三维空间中每一帧的高斯椭球中心都对应一个参数变化特征 $\Delta G$ 
+
+使用一个函数表示特定时间 $t$ 下空间中每一个点的 $\Delta G$ ：
+
+$$f(x,y,z, t) = \Delta G$$
+
+4DGS的基本思想就是训练一个MLP能够拟合这个函数。
 
