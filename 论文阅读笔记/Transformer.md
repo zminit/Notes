@@ -137,3 +137,5 @@ SUMMARIZATION》一文中处理语言问题的神经编码-解码器结构图：
 
 
 
+
+# 2. Transformer架构
