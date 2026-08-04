@@ -27,3 +27,20 @@ $$\hat{f}_L(\theta, \phi) = \sum_{l=0}^L \sum_{m=-l}^l c_{lm} \cdot B_{lm}(\thet
 <center><img alt=图 3 src=../images/lecture51783949677748.png width=500></center>
 
 >使用不同阶球谐函数的表示情况
+
+$$L_o(p, w_o) = \int_{\Omega^+} \underbrace{L_i(p, w_i)}_{Lighting} \underbrace{f_r(p ,w_i, w_o) \cos \theta_i V(p, w_i)}_{Light Transport} \, d w_i$$
+
+$$L_o(p, w_o) = \sum_p \sum_q c_p c_q \int_{\Omega^+} B_p(w_i) B_q(w_i) \, d w_i$$
+
+$$\sum_{i=1}^n [c_1^2,c_2^2,\dots ,c_n^2] \cdot \begin{bmatrix} B_1(w_i)^2 & 0 & \dots & 0 \\ 0 & B_2(w_i)^2 & \dots & 0  \\ \vdots & \vdots &\ddots & 0\\
+0 & 0 & \ldots & B_n(w_i)^2 & \end{bmatrix}$$
+
+>这里 $p \neq q$ 时，$B_p(w_i)B_q(w_i) = 0$
+
+diffuse的物体不同 $w_o$ 都相同，只需要计算一次 $L_o(p, w_o)$ 即可。结果是一个 $n$ 维向量 $[c_1^2,c_2^2,\dots ,c_n^2]$。
+
+glossy的物体不同 $w_o$ 都不同，需要计算 $L_o(p, w_o)$ 多次。因此结果是一个 $m\times n$ 的矩阵，$n$ 是球谐函数的阶，$m$ 是 $w_o$ 的方向数。
+
+$$\begin{bmatrix} c_{1,1}^2 & \dots & c_{1,n}^2 \\ \vdots & \ddots & \vdots \\ c_{m,n}^2 & \dots & c_{m,n}^2 \end{bmatrix}$$
+
+>Lighting部分不仅可以预计算单次弹射，还可以计算多次弹射。
