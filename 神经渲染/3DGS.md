@@ -79,8 +79,8 @@ $$J_F(\vec{x}) = \begin{bmatrix}
     \dots & & \dots  \\
     \frac{\partial F_3}{\partial x_1} & \dots & \frac{\partial F_3}{\partial x_3}
 \end{bmatrix}$$
- 
- $$F(x+\Delta x) \approx F(x) + J_F(x)\Delta x$$
+
+$$F(x+\Delta x) \approx F(x) + J_F(x)\Delta x$$
 
 **球谐函数**
 
@@ -175,7 +175,7 @@ $$R(\mathbf{q}) = \begin{bmatrix}
 
 **计算损失反向传播优化参数**
 
-$$\mathcal{L} = (1-\lambda)\|I_{render}-I_{gt}\|_1 + \lambda(1-\text{SSIM}(I_{render}, I_{gt}))\$$
+$$\mathcal{L} = (1-\lambda)\|I_{render}-I_{gt}\|_1 + \lambda(1-\text{SSIM}(I_{render}, I_{gt}))$$
 
 $$\text{SSIM}(x, y) = \frac{(2\mu_x\mu_y + C_1)(2\sigma_{xy} + C_2)}{(\mu_x^2+\mu_y^2+C_1)(\sigma_x^2+\sigma_y^2+C_2)}$$
 
@@ -191,10 +191,10 @@ $$\text{SSIM}(x, y) = \frac{(2\mu_x\mu_y + C_1)(2\sigma_{xy} + C_2)}{(\mu_x^2+\m
 5. 累计可见高斯的二维中心梯度模长
 6. Adam更新高斯参数
 7. 经过固定迭代轮次后计算平均梯度
-8. $\bar{g_i} \geq \tau_g:\begin{cases}
+8. $$\bar{g_i} \geq \tau_g:\begin{cases}
     尺度小 \to 克隆\\
     尺度大 \to 分裂
-\end{cases}$
+\end{cases}$$
 9. 删除低透明度或过大的高斯
 10. 清空统计，进入下一周期
 
@@ -229,7 +229,7 @@ $$\bar{g_i} \geq \tau_g \begin{cases}
 
 - 克隆操作是在原地复制两个一模一样的高斯中心，然后让它们自己在后续的训练中逐渐分开。
 - 分裂操作是在原始高斯椭球内随机采样2个点，缩放系数变换，其余参数继承，然后删除原始高斯椭球。
-    $$\mu_{i,k}^\prime \sim \mathcal{N}(\mu_{i,k}, \Sigma_{i,k}) \$$
+    $$\mu_{i,k}^\prime \sim \mathcal{N}(\mu_{i,k}, \Sigma_{i,k})$$
     $$s_{i,k}^{\prime} = \frac{s_i}{0.8N}$$
 
 - 删除操作的充分条件：$(\alpha_i < 0.005)$ || $(r_{i,\max}^{2D} > r_{\max})$ || $(\max(s_{x,i}, s_{y,i}, s_{z,i}) > 0.1E)$
@@ -345,4 +345,3 @@ $$\Delta G = (\Delta \mu, \Delta \mathbf{q}, \Delta \mathbf{s})$$
 $$f(x,y,z, t) = \Delta G$$
 
 4DGS的基本思想就是训练一个MLP能够拟合这个函数。
-

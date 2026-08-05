@@ -62,12 +62,20 @@ $$
 
 # 4. BRDF
 
+$$f_r(w_i,w_o) = \frac{L_o(w_o)}{E_i(w_i)}$$
+
+>出射辐射密度与入射辐射密度的比值
+
 BRDF描述材质反射性质，有如下性质：
+
 1. 非负性：BRDF值非负
 <center><img alt=图 12 src=../images/chapter6%20%E6%9D%90%E8%B4%A81750671889054.png width=300></center>
+
 2. 线性性（可加性）：
 <center><img alt=图 11 src=../images/chapter6%20%E6%9D%90%E8%B4%A81750671870758.png width=400></center>
+
 3. 可逆性：
 <center><img alt=图 13 src=../images/chapter6%20%E6%9D%90%E8%B4%A81750671918514.png width=400></center>
+
 4. 能量守恒：
 <center><img alt=图 14 src=../images/chapter6%20%E6%9D%90%E8%B4%A81750671954898.png width=400></center>

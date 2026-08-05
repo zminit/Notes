@@ -1,5 +1,7 @@
 # PRT(Precomputed Radiance Transfer)
 
+## 球谐函数
+
 <center><img alt=图 0 src=../images/lecture51783946463259.png width=500></center>
 
 - $l$ 频率，$m$ 编号。
@@ -17,6 +19,8 @@ $$\hat{f}_L(\theta, \phi) = \sum_{l=0}^L \sum_{m=-l}^l c_{lm} \cdot B_{lm}(\thet
 <center><img alt=图 1 src=../images/lecture51783948366676.png></center>
 
 >由图可以看出球谐函数可以保留大尺度的低频信息
+
+## 光线贴图预计算
 
 **计算Diffuse时使用前3阶球谐函数表示BRDF和光线贴图，然后根据方向进行采样后相乘。**
 
@@ -44,3 +48,37 @@ glossy的物体不同 $w_o$ 都不同，需要计算 $L_o(p, w_o)$ 多次。因�
 $$\begin{bmatrix} c_{1,1}^2 & \dots & c_{1,n}^2 \\ \vdots & \ddots & \vdots \\ c_{m,n}^2 & \dots & c_{m,n}^2 \end{bmatrix}$$
 
 >Lighting部分不仅可以预计算单次弹射，还可以计算多次弹射。
+
+## 贴图小波变换
+
+<center><img alt=图 5 src=../images/lecture51785862326279.png ></center>
+
+>使用小波变换对BRDF和光线贴图进行压缩。
+
+<center><img alt=图 4 src=../images/lecture51785862312682.png ></center>
+
+>SH压缩和小波变换压缩渲染效果对比
+
+# RSM
+
+# f 附录
+
+## f1 小波变换
+
+**Morlet 小波**
+
+$$\Psi(x) =  \exp(-\frac{x^2}{2}) \cdot \cos(\omega x)$$
+
+<center><img alt=图 0 src=../images/lecture51785854946354.png ></center>
+
+$$\Psi_{a,b}(x) = a \exp(-\frac{(x-b)^2}{2}) \cdot \cos(\omega (x-b))$$
+
+<center><img alt=图 3 src=../images/lecture51785855494130.png ></center>
+
+>a=2,b=2的Morlet小波函数图
+
+<center><img alt=图 1 src=../images/lecture51785855266334.png ></center>
+
+>对一段信号进行Morlet小波变换结果，同时可以看到时域和频域的情况
+
+- 小波变换虽然能同时保留时域和频域信息，但精度比不上时域信号和频域信号。频域效果完全比不上傅里叶变换。
