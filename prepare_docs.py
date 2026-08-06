@@ -31,23 +31,45 @@ FILES_TO_COPY = ["index.md", "notestyle.css", "mathjax-config.js"]
 def fix_image_refs_in_file(filepath: Path, images_dir: Path) -> int:
     """修复单个文件中的 URL 编码图片引用，返回修复数量。"""
     content = filepath.read_text(encoding="utf-8")
+    count = 0
 
-    # 匹配 src= 后带引号或不带引号的图片路径（含 URL 编码字符）
+    def replace_match(m):
+        nonlocal count
+        if m.group(1) is not None:
+            # 带引号：src="..." 或 src='...'
+            quote = m.group(1)
+            url = m.group(2)
+        else:
+            # 不带引号：src=...（以空格或 > 结束）
+            quote = ""
+            url = m.group(3)
+
+        if "%" not in url:
+            return m.group(0)
+
+        if url.startswith("../images/"):
+            prefix = "../images/"
+            filename = urllib.parse.unquote(url, encoding="utf-8")[len("../images/"):]
+        elif url.startswith("images/"):
+            prefix = "images/"
+            filename = urllib.parse.unquote(url, encoding="utf-8")[len("images/"):]
+        else:
+            return m.group(0)
+
+        if (images_dir / filename).exists():
+            count += 1
+            return f"src={quote}{prefix}{filename}{quote}"
+        return m.group(0)
+
+    # 一个正则同时匹配带引号和不带引号的 src 值
+    # group(1)+group(2): 带引号  |  group(3): 不带引号
     pattern = re.compile(
-        r'src=(["\']?)(\.\./images/|images/)([^"\')\s]*%[0-9A-F]{2}[^"\')\s]*?)(\1)'
+        r'src=(?:(["\'])((?:\.\./images/|images/)[^"\']*?)\1'
+        r'|'
+        r'((?:\.\./images/|images/)[^\s>]+))'
     )
 
-    def replace_match(match):
-        quote = match.group(1)
-        prefix = match.group(2)
-        encoded_path = match.group(3)
-        decoded_path = urllib.parse.unquote(encoded_path, encoding="utf-8")
-        full_path = images_dir / decoded_path
-        if full_path.exists():
-            return f"src={quote}{prefix}{decoded_path}{quote}"
-        return match.group(0)
-
-    new_content, count = pattern.subn(replace_match, content)
+    new_content = pattern.sub(replace_match, content)
 
     if count > 0:
         filepath.write_text(new_content, encoding="utf-8")
