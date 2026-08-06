@@ -1,36 +1,28 @@
 ---
-title: 人工智能学习笔记 - 目录
+title: 学习笔记
 ---
 
-# 人工智能学习笔记
+# 学习笔记
 
-这是一个最小的 GitHub Pages 目录页面，列出并链接仓库中“人工智能学习笔记”目录下的所有笔记，方便在 GitHub Pages 上浏览。
-
-下面以可折叠（展开/收起）的层级结构展示笔记目录，点击文件名可在仓库中打开对应的 Markdown 文件：
-
-<details open>
-  <summary>人工智能学习笔记/</summary>
-
-  <ul>
-    <li><a href="./人工智能学习笔记/深度学习基础.md">深度学习基础.md</a></li>
-    <li><a href="./人工智能学习笔记/数学基础.md">数学基础.md</a></li>
-    <li><a href="./人工智能学习笔记/大模型应用.md">大模型应用.md</a></li>
-    <li><a href="./人工智能学习笔记/MeachineLearning.md">MeachineLearning.md</a></li>
-    <li><a href="./人工智能学习笔记/聚类分析.md">聚类分析.md</a></li>
-    <li>
-      <details>
-        <summary>images/</summary>
-        <ul>
-          <li><a href="https://github.com/zminit/Notes/tree/main/docs/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/images">查看 images 目录（GitHub）</a></li>
-        </ul>
-      </details>
-    </li>
-  </ul>
-</details>
+欢迎！这里是我在学习过程中整理的技术笔记，涵盖计算机图形学、人工智能、游戏开发等多个领域。
 
 ---
 
-提示：
+## 笔记分类
 
-- 这是使用纯 HTML 的 `<details>/<summary>` 实现的折叠目录，兼容 GitHub（包括仓库页面与 GitHub Pages）的渲染，无需额外 JavaScript。你可以点击每一项展开/收起子目录或直接打开对应的 Markdown 文件查看内容。
-- 如果你希望我自动扫描并列出子目录下的所有文件（包括更多层级），我可以用脚本生成更完整的树并提交替换当前目录结构。
+| 分类 | 内容简介 |
+|------|----------|
+| **人工智能学习笔记** | 深度学习、数学基础、大模型应用、机器学习、聚类分析 |
+| **Games101 课程笔记** | 矩阵变换、光栅化、着色、几何、光线追踪、材质 |
+| **Games104 课程笔记** | 引擎架构分层 |
+| **Games202 课程笔记** | 实时渲染进阶 |
+| **OpenGL 学习笔记** | OpenGL 入门基础 |
+| **Unity Shader 入门精要笔记** | 渲染流水线、Shader 基础、光照、纹理、透明、复杂光照 |
+| **神经渲染** | NeRF、3D Gaussian Splatting |
+| **论文阅读笔记** | Transformer、傅里叶变换、图论与线代、脑电大模型 |
+| **Effective C++** | C++ 最佳实践 |
+
+---
+
+!!! tip "使用提示"
+    左侧导航栏可以展开各分类查看具体笔记，顶部搜索框支持全文搜索。
