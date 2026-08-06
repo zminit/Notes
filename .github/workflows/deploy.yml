@@ -21,8 +21,8 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Fix URL-encoded image references
-        run: python fix_image_refs.py
+      - name: Prepare docs directory
+        run: python prepare_docs.py
 
       - name: Install MkDocs Material
         run: pip install mkdocs-material
