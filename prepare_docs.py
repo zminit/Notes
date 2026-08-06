@@ -25,24 +25,26 @@ NOTE_DIRS = [
 ]
 
 # 需要复制到 docs/ 的单独文件
-FILES_TO_COPY = ["index.md", "notestyle.css"]
+FILES_TO_COPY = ["index.md", "notestyle.css", "mathjax-config.js"]
 
 
 def fix_image_refs_in_file(filepath: Path, images_dir: Path) -> int:
     """修复单个文件中的 URL 编码图片引用，返回修复数量。"""
     content = filepath.read_text(encoding="utf-8")
 
+    # 匹配 src= 后带引号或不带引号的图片路径（含 URL 编码字符）
     pattern = re.compile(
-        r'(?<=src=["\'])(\.\./images/|images/)([^"\')\s]*%[0-9A-F]{2}[^"\')\s]*)'
+        r'src=(["\']?)(\.\./images/|images/)([^"\')\s]*%[0-9A-F]{2}[^"\')\s]*?)(\1)'
     )
 
     def replace_match(match):
-        prefix = match.group(1)
-        encoded_path = match.group(2)
+        quote = match.group(1)
+        prefix = match.group(2)
+        encoded_path = match.group(3)
         decoded_path = urllib.parse.unquote(encoded_path, encoding="utf-8")
         full_path = images_dir / decoded_path
         if full_path.exists():
-            return prefix + decoded_path
+            return f"src={quote}{prefix}{decoded_path}{quote}"
         return match.group(0)
 
     new_content, count = pattern.subn(replace_match, content)
