@@ -1,0 +1,95 @@
+site_name: 学习笔记
+site_description: 技术学习笔记集合
+docs_dir: '.'
+
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.suggest
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: 切换深色模式
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: 切换浅色模式
+
+extra_css:
+  - notestyle.css
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - admonition
+  - footnotes
+  - toc:
+      permalink: true
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+exclude_docs: |
+  clear_unused_images.py
+  fix_image_refs.py
+  index.html
+  README.md
+
+nav:
+  - 首页: index.md
+  - 人工智能学习笔记:
+      - 深度学习基础: 人工智能学习笔记/深度学习基础.md
+      - 数学基础: 人工智能学习笔记/数学基础.md
+      - 大模型应用: 人工智能学习笔记/大模型应用.md
+      - 机器学习: 人工智能学习笔记/MeachineLearning.md
+      - 聚类分析: 人工智能学习笔记/聚类分析.md
+  - Games101 课程笔记:
+      - Chapter1 矩阵与变换: Games101课程笔记/chapter1 矩阵与变换.md
+      - Chapter2 光栅化: Games101课程笔记/chapter2 光栅化.md
+      - Chapter3 着色: Games101课程笔记/chapter3 着色.md
+      - Chapter4 几何: Games101课程笔记/chapter4 几何.md
+      - Chapter5 光线追踪: Games101课程笔记/chapter5 光线追踪.md
+      - Chapter6 材质: Games101课程笔记/chapter6 材质.md
+      - Appendix1 走样与反走样: Games101课程笔记/appendix1 走样与反走样.md
+      - Appendix2 渲染质量与效率: Games101课程笔记/appendix2 渲染质量与效率.md
+      - Appendix3 GPU带宽: Games101课程笔记/appendix3 GPU带宽.md
+  - Games104 课程笔记:
+      - Lecture2 引擎架构分层: Games104课程笔记/lecture2 引擎架构分层.md
+  - Games202 课程笔记:
+      - Lecture2: Games202课程笔记/lecture2.md
+      - Lecture3: Games202课程笔记/lecture3.md
+      - Lecture4: Games202课程笔记/lecture4.md
+      - Lecture5: Games202课程笔记/lecture5.md
+  - OpenGL 学习笔记:
+      - Chapter1 入门: OpenGL学习笔记/chapter1 入门.md
+  - Unity Shader 入门精要笔记:
+      - Chapter1 渲染流水线: 《Unity Shader入门精要》笔记/chapter1 渲染流水线.md
+      - Chapter2 UnityShader基础: 《Unity Shader入门精要》笔记/chapter2 UnityShader基础.md
+      - Chapter3 顶点片元着色器: 《Unity Shader入门精要》笔记/chapter3 顶点片元着色器.md
+      - Chapter4 光照shader: 《Unity Shader入门精要》笔记/chapter4 光照shader.md
+      - Chapter5 纹理贴图: 《Unity Shader入门精要》笔记/chapter5 纹理贴图.md
+      - Chapter6 透明效果: 《Unity Shader入门精要》笔记/chapter6 透明效果.md
+      - Chapter7 复杂光照: 《Unity Shader入门精要》笔记/chpater7 复杂光照.md
+  - 神经渲染:
+      - 基础: 神经渲染/base.md
+      - NeRF: 神经渲染/NeRF.md
+      - 3DGS: 神经渲染/3DGS.md
+  - 论文阅读笔记:
+      - Transformer: 论文阅读笔记/Transformer.md
+      - 傅里叶变换: 论文阅读笔记/傅里叶变换.md
+      - 图论与线代: 论文阅读笔记/图论与线代.md
+      - 脑电大模型: 论文阅读笔记/脑电大模型.md
+  - Effective C++:
+      - Chapter1: Effective C++/chapter1.md
