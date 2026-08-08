@@ -194,7 +194,7 @@ $$\text{SSIM}(x, y) = \frac{(2\mu_x\mu_y + C_1)(2\sigma_{xy} + C_2)}{(\mu_x^2+\m
 8. $$\bar{g_i} \geq \tau_g:\begin{cases}
     尺度小 \to 克隆\\
     尺度大 \to 分裂
-\end{cases}$$
+    \end{cases}$$
 9. 删除低透明度或过大的高斯
 10. 清空统计，进入下一周期
 
