@@ -1,0 +1,2267 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术学习笔记集合">
+      
+      
+      
+      
+        <link rel="prev" href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/">
+      
+      
+        <link rel="next" href="../%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>数学基础 - 学习笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../notestyle.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="学习笔记" class="md-header__button md-logo" aria-label="学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            学习笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              数学基础
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="学习笔记" class="md-nav__button md-logo" aria-label="学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    学习笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人工智能学习笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    人工智能学习笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    深度学习基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数学基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    大模型应用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MeachineLearning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机器学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%81%9A%E7%B1%BB%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    聚类分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Games101 课程笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Games101 课程笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games101%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/chapter1%20%E7%9F%A9%E9%98%B5%E4%B8%8E%E5%8F%98%E6%8D%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter1 矩阵与变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games101%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/chapter2%20%E5%85%89%E6%A0%85%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter2 光栅化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games101%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/chapter3%20%E7%9D%80%E8%89%B2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter3 着色
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games101%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/chapter4%20%E5%87%A0%E4%BD%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter4 几何
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games101%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/chapter5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter5 光线追踪
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games101%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/chapter6%20%E6%9D%90%E8%B4%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter6 材质
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games101%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/appendix1%20%E8%B5%B0%E6%A0%B7%E4%B8%8E%E5%8F%8D%E8%B5%B0%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix1 走样与反走样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games101%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/appendix2%20%E6%B8%B2%E6%9F%93%E8%B4%A8%E9%87%8F%E4%B8%8E%E6%95%88%E7%8E%87/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix2 渲染质量与效率
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games101%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/appendix3%20GPU%E5%B8%A6%E5%AE%BD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix3 GPU带宽
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Games104 课程笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Games104 课程笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games104%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/lecture2%20%E5%BC%95%E6%93%8E%E6%9E%B6%E6%9E%84%E5%88%86%E5%B1%82/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lecture2 引擎架构分层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Games202 课程笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Games202 课程笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games202%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/lecture2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lecture2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games202%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/lecture3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lecture3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games202%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/lecture4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lecture4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games202%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/lecture5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lecture5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenGL 学习笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OpenGL 学习笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenGL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/chapter1%20%E5%85%A5%E9%97%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter1 入门
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unity Shader 入门精要笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Unity Shader 入门精要笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E3%80%8AUnity%20Shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E3%80%8B%E7%AC%94%E8%AE%B0/chapter1%20%E6%B8%B2%E6%9F%93%E6%B5%81%E6%B0%B4%E7%BA%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter1 渲染流水线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E3%80%8AUnity%20Shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E3%80%8B%E7%AC%94%E8%AE%B0/chapter2%20UnityShader%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter2 UnityShader基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E3%80%8AUnity%20Shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E3%80%8B%E7%AC%94%E8%AE%B0/chapter3%20%E9%A1%B6%E7%82%B9%E7%89%87%E5%85%83%E7%9D%80%E8%89%B2%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter3 顶点片元着色器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E3%80%8AUnity%20Shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E3%80%8B%E7%AC%94%E8%AE%B0/chapter4%20%E5%85%89%E7%85%A7shader/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter4 光照shader
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E3%80%8AUnity%20Shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E3%80%8B%E7%AC%94%E8%AE%B0/chapter5%20%E7%BA%B9%E7%90%86%E8%B4%B4%E5%9B%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter5 纹理贴图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E3%80%8AUnity%20Shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E3%80%8B%E7%AC%94%E8%AE%B0/chapter6%20%E9%80%8F%E6%98%8E%E6%95%88%E6%9E%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter6 透明效果
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E3%80%8AUnity%20Shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E3%80%8B%E7%AC%94%E8%AE%B0/chpater7%20%E5%A4%8D%E6%9D%82%E5%85%89%E7%85%A7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter7 复杂光照
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    神经渲染
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    神经渲染
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%A5%9E%E7%BB%8F%E6%B8%B2%E6%9F%93/base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%A5%9E%E7%BB%8F%E6%B8%B2%E6%9F%93/NeRF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NeRF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%A5%9E%E7%BB%8F%E6%B8%B2%E6%9F%93/3DGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3DGS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    论文阅读笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    论文阅读笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/Transformer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transformer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/%E5%9B%BE%E8%AE%BA%E4%B8%8E%E7%BA%BF%E4%BB%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图论与线代
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/%E8%84%91%E7%94%B5%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    脑电大模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Effective C++
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Effective C++
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Effective%20C%2B%2B/chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="1">1. 矩阵<a class="headerlink" href="#1" title="Permanent link">&para;</a></h1>
+<p><strong>迹</strong></p>
+<blockquote>
+<p><strong>迹</strong>就是<strong>方阵</strong>主对角线之和，<span class="arithmatex">\(\text{tr}(A)\)</span></p>
+</blockquote>
+<ul>
+<li>线性：<span class="arithmatex">\(\text{tr}(A+B) = \text{tr}(A) + \text{tr}(B)\)</span></li>
+<li>循环置换不变：<span class="arithmatex">\(\text{tr}(ABC) = \text{tr}(BCA) = \text{tr}(CAB)\)</span></li>
+<li><span class="arithmatex">\(\text{tr}(A) = \sum_{i=1}^n \lambda_i\)</span></li>
+</ul>
+<p><strong>奇异矩阵</strong></p>
+<blockquote>
+<p><strong>奇异矩阵</strong>指不可逆矩阵，是“降维”线性变换</p>
+</blockquote>
+<p><strong>低秩分解</strong></p>
+<ol>
+<li>将原矩阵奇异值分解为 <span class="arithmatex">\(U\Sigma V^T\)</span>，其中 <span class="arithmatex">\(U\)</span> 是左奇异交矩（ <span class="arithmatex">\(AA^T的特征向量\)</span> ）阵，<span class="arithmatex">\(V\)</span> 是右奇异交矩阵（ <span class="arithmatex">\(A^TA的特征向量\)</span> ），<span class="arithmatex">\(\Sigma\)</span> 是对角矩阵，对角线上是奇异值。</li>
+<li>取前 <span class="arithmatex">\(k\)</span> 个奇异值和对应的奇异向量，构造新的矩阵 <span class="arithmatex">\(U_k\Sigma_k V^T\)</span></li>
+<li>用新的矩阵 <span class="arithmatex">\(U_k\Sigma_k V^T\)</span> 替换原矩阵，得到低秩分解</li>
+</ol>
+<h1 id="2">2. 概率论<a class="headerlink" href="#2" title="Permanent link">&para;</a></h1>
+<p><strong>中心极限定理</strong>：大量独立同分布随机变量的和（或平均值），无论原始分布是什么，在样本数量足够大时，其分布会趋近于高斯分布。</p>
+<h2 id="21">2.1 高斯分布<a class="headerlink" href="#21" title="Permanent link">&para;</a></h2>
+<div class="arithmatex">\[
+f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \large e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+\]</div>
+<div class="arithmatex">\[
+f(x) = \frac{1}{2\pi|\Sigma|^{-1/2}}\exp(-\frac{1}{2}\mathbf{(x-\mu)}^T\mathbf{\Sigma}^{-1}\mathbf{(x-\mu)})
+\]</div>
+<ul>
+<li><span class="arithmatex">\(\mu\)</span> 是均值</li>
+<li><span class="arithmatex">\(\sigma\)</span> 是标准差</li>
+<li><span class="arithmatex">\(\Sigma\)</span> 是协方差矩阵</li>
+<li>协方差矩阵的迹是总方差</li>
+<li>协方差矩阵是奇异矩阵时需要对PDF进行降维</li>
+</ul>
+<p><strong>计算协方差阵</strong></p>
+<ol>
+<li>计算均值 <span class="arithmatex">\(\mu = (\bar{x}_1, \bar{x}_2, \ldots, \bar{x}_n)\)</span></li>
+<li>
+<p>中心化：每一个向量减去均值 <span class="arithmatex">\(\mu\)</span></p>
+<div class="arithmatex">\[
+\mathbf{X}_{cent} = \mathbf{X} - \mathbf{\mu}
+\]</div>
+</li>
+<li>
+<p>计算协方差阵：</p>
+<div class="arithmatex">\[
+\Sigma = \frac{1}{n-1}\mathbf{X}_{cent}^T\mathbf{X}_{cent}：无偏估计
+\]</div>
+<div class="arithmatex">\[
+\Sigma_{MLE} = \frac{1}{n}\mathbf{X}_{cent}^T\mathbf{X}_{cent}:最大似然估计
+\]</div>
+</li>
+</ol>
+<h2 id="22">2.2 信息熵<a class="headerlink" href="#22" title="Permanent link">&para;</a></h2>
+<h3 id="221">2.2.1 香农熵<a class="headerlink" href="#221" title="Permanent link">&para;</a></h3>
+<center><img alt=图 12 src="../../images/数学基础1784624635460.png" width="400"></img></center>
+
+<div class="arithmatex">\[
+h(x) = -\log p(x)
+\]</div>
+<div class="arithmatex">\[
+H(X) = -\sum_{i=1}^n p_i \log p_i
+\]</div>
+<ul>
+<li><span class="arithmatex">\(p_i\)</span> 是第 <span class="arithmatex">\(i\)</span> 个事件发生的概率</li>
+<li><span class="arithmatex">\(X = \{x_1, x_2, \ldots, x_n\}\)</span> 是事件的集合，<span class="arithmatex">\(x_i\)</span> 是第 <span class="arithmatex">\(i\)</span> 个事件</li>
+<li><span class="arithmatex">\(H(X)\)</span> 是事件 <span class="arithmatex">\(X\)</span> 的信息熵，代表该概率分布下，事件 <span class="arithmatex">\(X\)</span> 的平均信息量</li>
+<li><span class="arithmatex">\(h(x)\)</span> 是事件 <span class="arithmatex">\(x\)</span> 的自信息量，当log底数为2，代表在该概率分布下，至少需要h(x)个比特来表示事件 <span class="arithmatex">\(x\)</span> </li>
+<li><span class="arithmatex">\(\log\)</span> 底数为2，单位为比特，底数为e，单位为奈特，底数为10，单位为哈特</li>
+</ul>
+<h3 id="222">2.2.2 交叉熵<a class="headerlink" href="#222" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+H(P,Q) = -\sum_{x \in X} P(x) \log Q(x)
+\]</div>
+<ul>
+<li><span class="arithmatex">\(P(x)\)</span> 是事件 <span class="arithmatex">\(x\)</span> 的真实概率分布</li>
+<li><span class="arithmatex">\(Q(x)\)</span> 是事件 <span class="arithmatex">\(x\)</span> 的近似概率分布</li>
+<li><span class="arithmatex">\(H(P,Q)\)</span> 是事件 <span class="arithmatex">\(X\)</span> 的交叉熵，代表使用Q(x)近似P(x)分布时，事件 <span class="arithmatex">\(X\)</span> 的平均信息量</li>
+</ul>
+<h3 id="223">2.2.3 条件熵<a class="headerlink" href="#223" title="Permanent link">&para;</a></h3>
+<center><img alt=图 29 src="../../images/数学基础1784955457801.png" width="400"></img></center>
+
+<blockquote>
+<p>联合概率密度函数，边缘概率密度函数</p>
+</blockquote>
+<ul>
+<li><span class="arithmatex">\(p_X(x)\)</span> :事件 <span class="arithmatex">\(x\)</span> 的边缘概率密度函数</li>
+<li><span class="arithmatex">\(p_Y(y)\)</span> :事件 <span class="arithmatex">\(y\)</span> 的边缘概率密度函数</li>
+<li><span class="arithmatex">\(p_{X,Y}(x,y)\)</span> :事件 <span class="arithmatex">\(x\)</span> 和 <span class="arithmatex">\(y\)</span> 的联合概率密度函数</li>
+</ul>
+<div class="arithmatex">\[
+H(Y|X) = H(X,Y) - H(X)
+\]</div>
+<div class="arithmatex">\[
+H(Y|X) = -\sum_{x \in X}\sum_{y \in Y} P(x,y) \log P(y|x)
+\]</div>
+<ul>
+<li><span class="arithmatex">\(H(Y|X)\)</span> 是在X已知的条件下，Y的平均信息量，或者说Y的剩余不确定性。</li>
+<li><span class="arithmatex">\(P(x,y)\)</span> 是事件 <span class="arithmatex">\(x\)</span> 和 <span class="arithmatex">\(y\)</span> 的联合概率分布</li>
+<li><span class="arithmatex">\(H(X,Y)\)</span> 事件x和y的联合熵，事件x和y同时出现时，(x,y)的平均信息量</li>
+</ul>
+<blockquote>
+<p>这里对于独立和相关事件都适用</p>
+</blockquote>
+<h3 id="224">2.2.4 互信息<a class="headerlink" href="#224" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+I(X;Y) = H(Y) - H(Y|X)
+\]</div>
+<div class="arithmatex">\[
+I(X;Y) = -\sum_{x \in X}\sum_{y \in Y} P(x,y) \log \frac{P(y|x)}{P(x)P(y)}
+\]</div>
+<blockquote>
+<p>互信息代表了知道X后，Y的不确定性（信息量）减少了多少</p>
+</blockquote>
+<ul>
+<li><span class="arithmatex">\(P(x),P(y)\)</span> x和y的边缘概率分布</li>
+</ul>
+<h2 id="225-renyi">2.2.5 Renyi熵<a class="headerlink" href="#225-renyi" title="Permanent link">&para;</a></h2>
+<div class="arithmatex">\[
+H_\alpha(X) = \frac{1}{1-\alpha} \log\sum_{i} p_i^\alpha
+\]</div>
+<div class="arithmatex">\[
+\lim_{\alpha \to 1} H_\alpha(X) = H(X)
+\]</div>
+<ul>
+<li><span class="arithmatex">\(\alpha &lt; 1\)</span>:低概率事件影响放大，关注分布的覆盖范围和尾部</li>
+<li><span class="arithmatex">\(\alpha &gt; 1\)</span>:高概率事件影响放大，关注分布的峰值和集中程度</li>
+<li><span class="arithmatex">\(\alpha = 0\)</span>:Hartley熵，只关心有多少个非零概率状态</li>
+<li><span class="arithmatex">\(\alpha = 2\)</span>:碰撞熵<span class="arithmatex">\(H_2(X)\)</span>，平均碰撞信息量（两次独立采样结果相同的平均信息量）</li>
+<li><span class="arithmatex">\(\alpha \to \infty\)</span>:最小熵，只关注概率最大的事件的信息量</li>
+</ul>
+<h2 id="23-kl">2.3 KL散度<a class="headerlink" href="#23-kl" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>KL散度（Kullback-Leibler散度）代表使用Q分布近似P分布带来的额外平均信息量</p>
+</blockquote>
+<div class="arithmatex">\[
+D_{KL}(P||Q) = \sum_{x \in X} -P(x)\log(Q(x)) + P(x)\log(P(x)) = \sum_{x \in X} P(x) \log \frac{P(x)}{Q(x)}
+\]</div>
+<center><img alt=图 11 src="../../images/数学基础1784555842608.png" width="500"></img></center>
+
+<p><strong>值得注意的是</strong></p>
+<div class="arithmatex">\[
+H(P,Q) = H(P) + D_{KL}(P||Q)
+\]</div>
+<h2 id="24-js">2.4 JS散度<a class="headerlink" href="#24-js" title="Permanent link">&para;</a></h2>
+<center><img alt=图 15 src="../../images/数学基础1784715489858.png" width="500"></img></center>
+
+<blockquote>
+<p>JS散度（Jensen-Shannon散度）代表使用P和Q分布之间的相似程度</p>
+</blockquote>
+<div class="arithmatex">\[
+M=\frac{1}{2}(P+Q)
+\]</div>
+<div class="arithmatex">\[
+D_{JS}(P||Q) = \frac{1}{2}D_{KL}(P||M) + \frac{1}{2}D_{KL}(Q||M)
+\]</div>
+<div class="arithmatex">\[
+D_{JS}(P||Q) = H(M) - \frac{1}{2}H(P) - \frac{1}{2}H(Q)
+\]</div>
+<ul>
+<li><strong>对称性</strong>：P和Q分布平等时可以稳定表示两个分布的差异，不会受到计算顺序的干扰</li>
+<li><strong>非负性</strong>：JS散度总大于等于0，且仅当P和Q分布相同时，JS散度为为0</li>
+<li><strong>有界性</strong>：JS散度计算过程中分母M(x)只有P(X)和Q(X)都为0的时候才会为0，不会出现 <span class="arithmatex">\(\infty\)</span></li>
+<li><span class="arithmatex">\(0 \leq D_{JS}(P||Q) \leq \log 2\)</span> ，JS散度梯度较小</li>
+</ul>
+<h2 id="25">2.5 线性回归与正则化<a class="headerlink" href="#25" title="Permanent link">&para;</a></h2>
+<center><img alt=图 22 src="../../images/数学基础1784791367843.png"></center>
+
+<blockquote>
+<p>这是一个线性回归的例子，线性回归是拟合样本的分布趋势。换一个角度说，线性回归是寻找一组 <span class="arithmatex">\(\{w_1, w_2, ..., w_n\}\)</span> (已知w后，可以根据 <span class="arithmatex">\(\hat{x},\hat{y}\)</span> 直接计算b )使得在噪声项 <span class="arithmatex">\(\epsilon\)</span> 符合特定分布（通常是高斯分布）下，样本出现的概率最大。</p>
+</blockquote>
+<div class="arithmatex">\[
+y_{real} = y_{ideal} + \epsilon
+\]</div>
+<ul>
+<li><span class="arithmatex">\(\epsilon\)</span>: 假设样本值与特征x呈现线性关系的情况下，由于各种其他原因，样本值与理想线性关系 <span class="arithmatex">\(y_{real} = wx+b\)</span> 之间存在噪声误差。一般将噪声误差分布假设为高斯分布。</li>
+</ul>
+<div class="arithmatex">\[
+\begin{matrix}
+P_{\mathbf{w}}(\mathcal{X}) = \prod\limits_{i=1}^n P_{\mathbf{w}}((x_i,y_i)) \\
+P_{\mathbf{w}}((x_i,y_i)) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp \frac{-\epsilon_i^2}{2\sigma^2} \\
+\log P_{\mathbf{w}}(\mathcal{X}) = \sum\limits_{i=1}^n \log P_{\mathbf{w}}((x_i,y_i)) \\
+= -\sum\limits_{i=1}^n \frac{k}{2\sigma^2} \epsilon_i^2  + C\\
+= - \frac{k}{2\sigma^2}(\sum\limits_{i=1}^n \epsilon_i^2) + C  \\
+k=\log e,C=-\frac{n}{2}\log 2\pi\sigma^2 \\
+不难发现，\sum\limits_{i=1}^n \epsilon_i^2 越小，P_\mathbf{w}(\mathcal{X}) 越大
+\end{matrix}
+\]</div>
+<ul>
+<li><span class="arithmatex">\(P_{\mathbf{w}}(\mathcal{X})\)</span>:在参数 <span class="arithmatex">\(\mathbf{w}\)</span> 下，样本集 <span class="arithmatex">\(\mathcal{X}\)</span> 出现的概率</li>
+<li><span class="arithmatex">\(\epsilon_i\)</span>: 第 <span class="arithmatex">\(i\)</span> 个样本 <span class="arithmatex">\(y_i\)</span> 与理想线性关系 <span class="arithmatex">\(y_{ideal} = wx+b\)</span> 之间存在噪声误差</li>
+</ul>
+<p><strong>已知权重分布的先验，需要求得的就是参数和样本的联合概率最大的情况</strong></p>
+<center><img alt=图 21 src="../../images/数学基础1784790645355.png" width="600"></img></center>
+
+<blockquote>
+<p>有时可能出现多种结果的MSE最小且相同，此时可以根据w的先验分布选择联合最优结果</p>
+</blockquote>
+<div class="arithmatex">\[
+P[Data, \mathbf{w}] = \underbrace{P_{\mathbf{w}}[Data]}_{\text{Likelihood}} \cdot \underbrace{P[\mathbf{w}]}_{\text{Prior}}
+\]</div>
+<blockquote>
+<p>这里假设权重具有相同的先验尺度</p>
+</blockquote>
+<p><strong>权重按照高斯分布</strong></p>
+<div class="arithmatex">\[
+\begin{matrix}
+P(\mathcal{X},\mathbf{w}) = P_{\mathbf{w}}(\mathcal{X})\cdot P(\mathbf{w}), \mathbf{w}\sim
+\mathcal{N}(0, \tau^2)\\
+= \prod\limits_{i=1}^m \frac{1}{\sqrt{2\pi\tau^2}}\exp \frac{-w_i^2}{2\tau^2} \cdot \prod\limits_{i=1}^n \frac{1}{\sqrt{2\pi \sigma^2}}\exp \frac{-\epsilon_i^2}{2\sigma^2} \\
+\log P(\mathcal{X},\mathbf{w}) = -\sum\limits_{i=1}^n \frac{k}{2\sigma^2} \epsilon_i^2 + -\sum\limits_{i=1}^m \frac{k}{2\tau^2} w_i^2 + C \\
+= - \frac{k}{2\sigma^2}(\sum\limits_{i=1}^n \epsilon_i^2 + \lambda \sum\limits_{i=1}^{m} w_i^2) + C  \\
+\end{matrix}
+\]</div>
+<ul>
+<li><span class="arithmatex">\(\lambda\)</span> : 正则化系数，<span class="arithmatex">\(\lambda = \frac{\sigma^2}{\tau^2}\)</span></li>
+</ul>
+<center><img alt=图 23 src="../../images/数学基础1784793710202.png"></center>
+
+<blockquote>
+<p>权重先验更强时，<span class="arithmatex">\(\lambda\)</span> 会越大，正则化影响越强</p>
+</blockquote>
+<center><img alt=图 26 src="../../images/数学基础1784793783102.png"></center>
+
+<blockquote>
+<p>数据非常可靠且方差很小时，<span class="arithmatex">\(\lambda\)</span> 减小，侧重拟合数据</p>
+</blockquote>
+<p><strong>权重按照拉普拉斯分布</strong></p>
+<center><img alt=图 27 src="../../images/数学基础1784794136157.png" width="400"></img></center>
+
+<blockquote>
+<p>拉普拉斯分布</p>
+</blockquote>
+<div class="arithmatex">\[
+P(w) = \frac{1}{2b}\exp(\frac{-|w|}{b})
+\]</div>
+<div class="arithmatex">\[
+P(\mathcal{X}, \mathbf{w}) = P_{\mathbf{w}}(\mathcal{X})\cdot P(\mathbf{w}), \mathbf{w}\sim
+\mathcal{L}(0, b)
+\]</div>
+<div class="arithmatex">\[
+\begin{matrix}
+\log P(\mathcal{X}, \mathbf{w}) = -\sum\limits_{i=1}^n \frac{k}{2\sigma^2} \epsilon_i^2 -\sum\limits_{i=1}^m \frac{k}{b} |w_i| + C \\
+= - \frac{k}{2\sigma^2}(\sum\limits_{i=1}^n \epsilon_i^2 + 2\lambda \sum\limits_{i=1}^{m} |w_i|) + C , \lambda = \frac{\sigma^2}{b} \\
+\end{matrix}
+\]</div>
+<p><strong>权重分布含义</strong></p>
+<center><img alt=图 28 src="../../images/数学基础1784797468222.png" width="400"></img></center>
+
+<p>输入特征：<span class="arithmatex">\(\{x_1, x_2, ..., x_n\}\)</span></p>
+<p>特征权重：<span class="arithmatex">\(\{w_1, w_2, ..., w_n\}\)</span></p>
+<blockquote>
+<p>一般都会对输入进行标准化处理，使其分布在相近尺度下。输入特征相互独立。
+- 每个特征权重都对应一个输入特征对结果的影响力，如果输入特征数足够多，其影响力分布就会趋近于高斯分布
+- 如果只有部分输入特征对结果有影响，就使用拉普拉斯分布。</p>
+</blockquote>
+<p><strong>函数拟合</strong></p>
+<blockquote>
+<p>线性回归是函数拟合的一种特殊形式，函数拟合可以看作最大化 <span class="arithmatex">\(P(\mathcal{X}, \mathbf{\theta})\)</span>， <span class="arithmatex">\(\theta\)</span> 是神经网络参数。</p>
+<p>概率分布近似于函数拟合的区别仍待探究</p>
+</blockquote>
+<h1 id="3">3. 神经网络<a class="headerlink" href="#3" title="Permanent link">&para;</a></h1>
+<h2 id="31">3.1 通用逼近定理<a class="headerlink" href="#31" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>对定义在紧致区域上的任意连续函数 f(x)，以及任意小的误差 ε&gt;0，只要隐藏层神经元足够多，就存在一组网络参数，使得 <span class="arithmatex">\(\hat{f}(x) \approx f(x)\)</span>，误差小于 ε。</p>
+</blockquote>
+<div class="arithmatex">\[
+\hat{f}(\mathbf{x}) = \sum_{i=1}^N a_i \sigma(\mathbf{w}_i^T \mathbf{x} + b_i) + c
+\]</div>
+<blockquote>
+<p>通用逼近定理多隐藏层推广：</p>
+</blockquote>
+<div class="arithmatex">\[
+\hat{f}(\mathbf{x}) = \sum_{i=1}^N a_i \sigma_m(\mathbf{w}_{i,m}^T (\sigma_{m-1}(\mathbf{W}_{m-1}^T (...\sigma_1(\mathbf{W}_{1}^T \mathbf{x}+\mathbf{b}_{1})...) + \mathbf{b}_{m-1})) + b_{i,m}) + c
+\]</div>
+<center><img alt=图 2 src="../../images/数学基础1784361422363.png"></center>
+
+<blockquote>
+<p>需要注意的是，N和n不同。</p>
+</blockquote>
+<p><strong>理论上，单隐藏层神经网络理论上可以逼近到任意精度</strong></p>
+<center><img alt=图 5 src="../../images/数学基础1784371626907.png"></center>
+
+<blockquote>
+<p>使用ReLU激活函数拟合f(x)示例</p>
+</blockquote>
+<center><img alt=图 7 src="../../images/数学基础1784453144086.png"></center>
+
+<blockquote>
+<p>单层使用ReLU的神经网络理论上每一折都需要一个神经元，多层神经元随着函数变得复杂，使用的神经元数量会慢慢远小于单层神经元。每个神经元都会对应三个参数 <span class="arithmatex">\(w_i, b_i, a_i\)</span> 。</p>
+</blockquote>
+<div class="arithmatex">\[
+T^{m}(x) = T(T(...(T(x))))
+\]</div>
+<blockquote>
+<p>每复合一次，线性区间（图上的尖峰左右两侧各对应一个线性区间）会翻倍，m层就有 <span class="arithmatex">\(2^m\)</span> 个线性区间。而单层神经网络一个线性区间就对应一个神经元。</p>
+</blockquote>
+<p>g(x) 和 g(x,0,0,...,0)之间有区别吗</p>
+<blockquote>
+<p>似乎有很大的区别。</p>
+</blockquote>
+<h2 id="32">3.2 神经元死亡<a class="headerlink" href="#32" title="Permanent link">&para;</a></h2>
+<p>神经元对所有输入数据的输出都为0</p>
+<p>例如：输入数据 <span class="arithmatex">\(x\in [-1,1]\)</span></p>
+<div class="arithmatex">\[
+\begin{matrix}
+L = (F - y)^2 \\
+F = a_1 ReLU(w_1 x - b_1) : a_1 = 0.4, b_1 = -0.51, w_1 = -0.1 \\
+f = w_1 x - b_1 \\ \\
+\Large\frac{\partial L}{\partial w_1} = \frac{\partial L}{\partial F} \frac{\partial F}{\partial f} \frac{\partial f}{\partial w_1} \\ \\
+\because f \leq 0 \rightarrow \Large \frac{\partial ReLU}{\partial f} = 0 \rightarrow \frac{\partial F}{\partial f} = 0 \\ \\
+\therefore \Large \frac{\partial L}{\partial w_1} = 0 \\ \\
+同理 \Large \frac{\partial L}{\partial b_1} = 0 \\
+\end{matrix}
+\]</div>
+<p>对所有的输入数据，该神经元 <span class="arithmatex">\(w_1, b_1\)</span> 都无法更新，则称该神经元死亡。如果一整层的神经元都死亡，则整个网络都会冻结。</p>
+<blockquote>
+<p>即使不使用dropout，神经元也可能死亡，而且在业界也造成了不少问题</p>
+</blockquote>
+<h2 id="33">3.3 频谱偏移<a class="headerlink" href="#33" title="Permanent link">&para;</a></h2>
+<div class="arithmatex">\[
+L(\theta) = \frac{1}{2}\int_{a}^{b} (g(x;\theta) - f(x))^2 dx
+\]</div>
+<blockquote>
+<p><span class="arithmatex">\(f(x)\)</span> 为目标函数，<span class="arithmatex">\(g(x;\theta)\)</span> 为模型函数， <span class="arithmatex">\(\theta\)</span> 为模型参数。</p>
+</blockquote>
+<div class="arithmatex">\[
+f(x) = a_1\sin(k_1 x+b_1) + a_2\sin(k_2 x+b_2)+...+a_n\sin(k_n x+b_n), x \in [a, b]
+\]</div>
+<div class="arithmatex">\[
+\begin{align*}
+\frac{\partial L}{\partial w} &amp; = \int_{a}^{b} (g(x;\theta) - f(x)) \frac{\partial g(x;\theta)}{\partial w} dx\\
+&amp;  令  \frac{\partial g(x;\theta)}{\partial w} = h(x)\\
+&amp; = \int_{a}^{b} h(x)g(x;\theta) dx - \int_{a}^{b} h(x)f(x)  dx\\
+\because &amp; \int_{a}^b h(x)g(x;\theta) dx 与频率无关\\
+\therefore &amp;= C_0 + \sum_{i=1}^n \int_{a}^b h(x) a_i\sin(k_i x + b_i) dx\\
+&amp; = \sum_{i=1}^n (-\frac{h(x)a_i\cos(k_i x+b_i)}{k_i}|_a^b + \frac{1}{k_i}\int_{a}^b h^\prime(x)a_i\cos(k_i x+b_i) dx) + C_0 \\
+&amp; = \sum_{i=1}^n I(k_i) + C_0 \\
+\because &amp; |I(k)| \leq \frac{2M_h+2M_{h^\prime}}{k} = \frac{C}{k}, h(x)\leq M_h, h^\prime(x)\leq M_{h^\prime}, x \in [a, b]\\ \\
+\therefore &amp; \leq  \sum_{i=1}^n \frac{C}{k_i} + C_0 \\
+\end{align*}
+\]</div>
+<div class="arithmatex">\[
+w的梯度中各频率参与情况：[-\frac{C}{k_1},+\frac{C}{k_1}]+...+[-\frac{C}{k_n},+\frac{C}{k_n}]
+\]</div>
+<blockquote>
+<p>总结就是，对模型中的参数w, 目标函数f(x)中低频的部分参与度更高，假如 <span class="arithmatex">\(\sin(\pi x)\)</span> 部分对w的梯度值贡献为<span class="arithmatex">\(C\)</span> 的话，那 <span class="arithmatex">\(\sin(100\pi x)\)</span> 部分对w的梯度值贡献为 <span class="arithmatex">\(\frac{C}{100}\)</span> ，低频的变化能影响w的值。</p>
+</blockquote>
+<h2 id="34">3.4 位置编码<a class="headerlink" href="#34" title="Permanent link">&para;</a></h2>
+<center><img alt=图 8 src="../../images/数学基础1784537168615.png"></center>
+
+<p>位置编码确实能让不同频率的变化快速被拟合，原理未知，推测需要目标函数的频域分布要和输入的位置编码频率相似才行。</p>
+<center><img alt=图 9 src="../../images/数学基础1784539183306.png"></center>
+
+<blockquote>
+<p>猜想：多输入的神经网络可以看作多个独立的神经网络加权之和。它们合并时子神经网络之间的连接负责在计算时实现子网络的相关连接，如图：f(x)有多个正交基函数加权相加，使用不同的子网络并行训练拟合基函数，但是y只有一个，所以不同子网络需要相互配合，因此可以合并成一个大网络，让神经网络自己学习如何相互配合。</p>
+</blockquote>
+<center><img alt=图 10 src="../../images/数学基础1784539521890.png" width=500></center>
+
+<blockquote>
+<p>不难发现，每轮输入的x只会出现一次，但 <span class="arithmatex">\(y_i = sin(wx)\)</span> 会反复出现，出现次数刚好是 <span class="arithmatex">\(\frac{w_i(b-a)}{2\pi}\)</span> 。这就相当于 一轮 <span class="arithmatex">\(w_i\)</span> 对应的频率训练 <span class="arithmatex">\(\frac{w_i(b-a)}{2\pi}\)</span> 轮。也增加了高频信息拟合的速度。</p>
+</blockquote>
+<p><strong>那么可以推定，除了傅里叶基函数，其他连续可微基函数也可以作为位置编码。</strong></p>
+<p><strong>傅里叶基（正弦波）是“平坦直线空间”的拉普拉斯算子特征解；球谐函数是“球面空间”的拉普拉斯算子特征解；任何你想要的“位置编码”基函数，本质上都应该是“该输入空间所在流形”的拉普拉斯算子特征解。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../mathjax-config.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2517 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术学习笔记集合">
+      
+      
+      
+      
+        <link rel="prev" href="../NeRF/">
+      
+      
+        <link rel="next" href="../../%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/Transformer/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>3DGS - 学习笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../notestyle.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-3dgs" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="学习笔记" class="md-header__button md-logo" aria-label="学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            学习笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3DGS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="学习笔记" class="md-nav__button md-logo" aria-label="学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    学习笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人工智能学习笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    人工智能学习笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    深度学习基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数学基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    大模型应用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/MeachineLearning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机器学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%81%9A%E7%B1%BB%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    聚类分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Games101 课程笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Games101 课程笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games101%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/chapter1%20%E7%9F%A9%E9%98%B5%E4%B8%8E%E5%8F%98%E6%8D%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter1 矩阵与变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games101%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/chapter2%20%E5%85%89%E6%A0%85%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter2 光栅化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games101%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/chapter3%20%E7%9D%80%E8%89%B2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter3 着色
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games101%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/chapter4%20%E5%87%A0%E4%BD%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter4 几何
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games101%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/chapter5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter5 光线追踪
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games101%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/chapter6%20%E6%9D%90%E8%B4%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter6 材质
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games101%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/appendix1%20%E8%B5%B0%E6%A0%B7%E4%B8%8E%E5%8F%8D%E8%B5%B0%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix1 走样与反走样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games101%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/appendix2%20%E6%B8%B2%E6%9F%93%E8%B4%A8%E9%87%8F%E4%B8%8E%E6%95%88%E7%8E%87/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix2 渲染质量与效率
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games101%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/appendix3%20GPU%E5%B8%A6%E5%AE%BD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix3 GPU带宽
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Games104 课程笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Games104 课程笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games104%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/lecture2%20%E5%BC%95%E6%93%8E%E6%9E%B6%E6%9E%84%E5%88%86%E5%B1%82/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lecture2 引擎架构分层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Games202 课程笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Games202 课程笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games202%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/lecture2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lecture2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games202%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/lecture3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lecture3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games202%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/lecture4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lecture4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games202%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/lecture5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lecture5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenGL 学习笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OpenGL 学习笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenGL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/chapter1%20%E5%85%A5%E9%97%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter1 入门
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unity Shader 入门精要笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Unity Shader 入门精要笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E3%80%8AUnity%20Shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E3%80%8B%E7%AC%94%E8%AE%B0/chapter1%20%E6%B8%B2%E6%9F%93%E6%B5%81%E6%B0%B4%E7%BA%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter1 渲染流水线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E3%80%8AUnity%20Shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E3%80%8B%E7%AC%94%E8%AE%B0/chapter2%20UnityShader%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter2 UnityShader基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E3%80%8AUnity%20Shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E3%80%8B%E7%AC%94%E8%AE%B0/chapter3%20%E9%A1%B6%E7%82%B9%E7%89%87%E5%85%83%E7%9D%80%E8%89%B2%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter3 顶点片元着色器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E3%80%8AUnity%20Shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E3%80%8B%E7%AC%94%E8%AE%B0/chapter4%20%E5%85%89%E7%85%A7shader/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter4 光照shader
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E3%80%8AUnity%20Shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E3%80%8B%E7%AC%94%E8%AE%B0/chapter5%20%E7%BA%B9%E7%90%86%E8%B4%B4%E5%9B%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter5 纹理贴图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E3%80%8AUnity%20Shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E3%80%8B%E7%AC%94%E8%AE%B0/chapter6%20%E9%80%8F%E6%98%8E%E6%95%88%E6%9E%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter6 透明效果
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E3%80%8AUnity%20Shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E3%80%8B%E7%AC%94%E8%AE%B0/chpater7%20%E5%A4%8D%E6%9D%82%E5%85%89%E7%85%A7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter7 复杂光照
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    神经渲染
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    神经渲染
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NeRF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NeRF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3DGS
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3DGS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 前置基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1 前置基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1.1 线性代数基础
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1.2 高斯分布
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1.3 雅可比矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 渲染过程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 训练过程
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    论文阅读笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    论文阅读笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/Transformer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transformer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/%E5%9B%BE%E8%AE%BA%E4%B8%8E%E7%BA%BF%E4%BB%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图论与线代
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/%E8%84%91%E7%94%B5%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    脑电大模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Effective C++
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Effective C++
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Effective%20C%2B%2B/chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 前置基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1 前置基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1.1 线性代数基础
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1.2 高斯分布
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1.3 雅可比矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 渲染过程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 训练过程
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="1-3dgs">1. 3DGS<a class="headerlink" href="#1-3dgs" title="Permanent link">&para;</a></h1>
+<h2 id="11">1.1 前置基础<a class="headerlink" href="#11" title="Permanent link">&para;</a></h2>
+<h3 id="111">1.1.1 线性代数基础<a class="headerlink" href="#111" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+\exist A, A^T = A 且 A可逆 \Leftrightarrow \exist V, V^T V = I, \det(V) = 1, A = V^T \Lambda V
+\]</div>
+<div class="arithmatex">\[
+R是旋转矩阵 \Leftrightarrow R^T R = I, \det(R) = 1
+\]</div>
+<div class="arithmatex">\[
+线性：f(x_1+x_2)=f(x_1)+f(x_2)
+\]</div>
+<div class="arithmatex">\[
+频域点积 = 时域卷积
+\]</div>
+<h3 id="112">1.1.2 高斯分布<a class="headerlink" href="#112" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+G(x)=\frac{1}{\sqrt{(2\pi)^k|\Sigma|}}e^{-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)}
+\]</div>
+<ul>
+<li><span class="arithmatex">\(x=[x,y,z]^T\)</span> 是空间中采样点。</li>
+<li><span class="arithmatex">\(\mu=[\mu_x,\mu_y,\mu_z]^T\)</span> 是均值向量，也是高斯球中心位置。</li>
+<li><span class="arithmatex">\(\Sigma\)</span> 是协方差矩阵, 半正定，控制高斯球大小，形状和朝向。</li>
+<li><span class="arithmatex">\(G(x)\in (0,1]\)</span> 该高斯在x处的概率密度。</li>
+<li><span class="arithmatex">\(\frac{1}{\sqrt{(2\pi)^k|\Sigma|}}\)</span> 是归一化因子，确保高斯分布在空间中积分为1，但3DGS一般不使用。</li>
+<li><span class="arithmatex">\(\mathcal{N}(\mu, \sigma)\)</span> 高斯分布就是正态分布，1 <span class="arithmatex">\(\sigma\)</span> 原则：68.26% 的概率在 <span class="arithmatex">\(\mu \pm 1\sigma\)</span> 内。</li>
+</ul>
+<p><strong>协方差矩阵</strong></p>
+<blockquote>
+<p>协方差矩阵与几何变换的关系</p>
+</blockquote>
+<p>3DGS只是用了高斯分布的几何属性，因此这里只需要将协方差矩阵当作特殊的对称矩阵就行。</p>
+<div class="arithmatex">\[
+\Sigma = \begin{bmatrix}
+\sigma_x^2 &amp; \sigma_{xy} &amp; \sigma_{xz} \\
+\sigma_{xy} &amp; \sigma_y^2 &amp; \sigma_{yz} \\
+\sigma_{xz} &amp; \sigma_{zy} &amp; \sigma_z^2
+\end{bmatrix}
+\]</div>
+<ul>
+<li><span class="arithmatex">\(\Sigma^T = \Sigma, v^T \Sigma v \geq 0\)</span>, 对称半正定。</li>
+<li>一个三维协方差矩阵需要 <span class="arithmatex">\((\sigma_x,\sigma_y,\sigma_z,\sigma_{xy},\sigma_{xz},\sigma_{yz},\sigma_{zy},)\)</span> 6个参数确定。</li>
+<li>根据线代基础，<span class="arithmatex">\(\Sigma = V^T \Lambda V\)</span>，其中<span class="arithmatex">\(V\)</span>是正交矩阵，<span class="arithmatex">\(\Lambda\)</span>是对角矩阵，<span class="arithmatex">\(V^T = V^{-1}\)</span>， <span class="arithmatex">\(V\)</span> 是旋转矩阵， <span class="arithmatex">\(\Lambda\)</span> 是缩放矩阵。</li>
+</ul>
+<p><strong>高斯球</strong></p>
+<blockquote>
+<p>高斯球的几何属性</p>
+</blockquote>
+<div class="arithmatex">\[
+G(x) = e^{-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)}
+\]</div>
+<div class="arithmatex">\[
+令y = (x-\mu)^TR,(x-\mu)^T\Sigma^{-1}(x-\mu) =  y^T V y =\frac{y_1^2}{\lambda_x^2} + \frac{y_2^2}{\lambda_y^2} + \frac{y_3^2}{\lambda_z^2} = constant
+\]</div>
+<center><img alt=图 2 src="../../images/3DGS1783941677490.png" width=400></center>
+
+<ul>
+<li><span class="arithmatex">\(G(x) = C\)</span> 就是一个椭球壳，所以 <span class="arithmatex">\(G(x) \in (0,1]\)</span> 代表一个椭球体,同时值从中心向外快速衰减。</li>
+</ul>
+<center><img alt=图 0 src="../../images/3DGS1783931448956.png" width=400></center>
+
+<ul>
+<li>从图中可以看到 <span class="arithmatex">\(G(x)\)</span> 是一个无限延申的函数，一般使用 <span class="arithmatex">\(G = e^{-k^2/2}\)</span> 作为截断处。实际应用会有所不同。</li>
+</ul>
+<p><strong>高斯球性质</strong></p>
+<ul>
+<li>仿射变换高斯核仍然闭合。</li>
+<li>高斯核沿着某一个轴积分降维后，仍然是高斯。</li>
+<li>高斯核是一个实心椭球，每一层代表一个概率。</li>
+</ul>
+<h3 id="113">1.1.3 雅可比矩阵<a class="headerlink" href="#113" title="Permanent link">&para;</a></h3>
+<center><img alt=图 1 src="../../images/3DGS1783941599165.png" width=400></center>
+
+<ul>
+<li>非线性变换会破坏函数的性质（如图上的正方形变换后变得扭曲），我们可以在局部微小空间中使用线性变换近似非线性变换（如图上橙色虚线），来保留一些性质。</li>
+</ul>
+<div class="arithmatex">\[
+F:\mathbb{R}^3 \to \mathbb{R}^3, F(x) = \begin{bmatrix}
+F_1(x) \\
+\dots \\
+F_3(x)
+\end{bmatrix}
+\]</div>
+<div class="arithmatex">\[
+J_F(\vec{x}) = \begin{bmatrix}
+\frac{\partial F_1}{\partial x_1} &amp; \dots &amp; \frac{\partial F_1}{\partial x_3} \\
+\dots &amp; &amp; \dots  \\
+\frac{\partial F_3}{\partial x_1} &amp; \dots &amp; \frac{\partial F_3}{\partial x_3}
+\end{bmatrix}
+\]</div>
+<div class="arithmatex">\[
+F(x+\Delta x) \approx F(x) + J_F(x)\Delta x
+\]</div>
+<p><strong>球谐函数</strong></p>
+<center><img alt=图 3 src="../../images/3DGS1783999382068.png" width=400></center>
+
+<blockquote>
+<p>不同球谐函数对应的球面贴图</p>
+</blockquote>
+<div class="arithmatex">\[
+f(x) = \sum_i c_i \cdot B_i(x)
+\]</div>
+<div class="arithmatex">\[
+c_i = \int_{\mathbb{R}^3} f(x) \cdot B_i(x) \, dx
+\]</div>
+<blockquote>
+<p>使用球谐函数可以拟合smooth的光照，系数 <span class="arithmatex">\(c_i\)</span> 是球谐函数球面贴图与光照贴图的点积。</p>
+</blockquote>
+<h2 id="12">1.2 渲染过程<a class="headerlink" href="#12" title="Permanent link">&para;</a></h2>
+<center><img alt=图 4 src="../../images/3DGS1784088466278.png"></center>
+
+<ol>
+<li>已知高斯中心点集合 <span class="arithmatex">\(\{(x_i,y_i,z_i)_{i=1}^N \}\)</span> 以及各高斯椭球参数 <span class="arithmatex">\((\lambda, \mathbf{q}, \alpha, \mathbf{c})\)</span>。</li>
+<li><span class="arithmatex">\(\lambda = (\lambda_x, \lambda_y,\lambda_z)\)</span> 是缩放因子，控制高斯球的大小。</li>
+<li><span class="arithmatex">\(\mathbf{q} = (x, y, z, w)\)</span> 是旋转参数，控制高斯球的朝向。</li>
+<li><span class="arithmatex">\(\alpha\)</span> 是高斯球的透明度。</li>
+<li><span class="arithmatex">\(\mathbf{c} = (c_1,c_2,\dots,c_{16})\)</span>, 是球谐函数的系数向量，控制高斯球的光照。</li>
+<li>将高斯椭球中心投影变换到屏幕空间，剔除屏幕外的高斯球。</li>
+<li>计算每个高斯椭球的协方差矩阵 <span class="arithmatex">\(\Sigma\)</span> ，将高斯椭球投影到屏幕空间，然后经过雅可比变换得到二维高斯椭圆。</li>
+</ol>
+<div class="arithmatex">\[
+R(\mathbf{q}) = \begin{bmatrix}
+1-2y^2-2z^2 &amp; 2xy-2wz &amp; 2xz+2wy \\
+2xy+2wz &amp; 1-2x^2-2z^2 &amp; 2yz-2wx \\
+2xz-2wy &amp; 2yz+2wx &amp; 1-2x^2-2y^2
+\end{bmatrix}
+\]</div>
+<div class="arithmatex">\[
+\Sigma = R \begin{bmatrix}
+\lambda_x^2 &amp; 0 &amp; 0 \\
+0 &amp; \lambda_y^2 &amp; 0 \\
+0 &amp; 0 &amp; \lambda_z^2
+\end{bmatrix}R^T
+\]</div>
+<div class="arithmatex">\[
+\Sigma_{2D} \approx J W \Sigma W^T J^T
+\]</div>
+<ol>
+<li>光栅化：每个片元按照覆盖该片元的高斯椭圆中心深度对高斯圆进行排序，从浅到深混合渲染。</li>
+<li>将屏幕分为 <span class="arithmatex">\(16 \times 16\)</span> 的tile, 每个高斯椭圆记录一条 <span class="arithmatex">\(\{tile ID : 高斯中心深度z \}\)</span> 。</li>
+<li>按照tile ID对高斯椭圆进行分组，然后每个tile计算一个深度排序列表 <span class="arithmatex">\([\text{Gaussian ID}_1,\dots,\text{Gaussian ID}_N]\)</span>。</li>
+<li>每个片元：按照对应tile的高斯列表，从浅到深查询，如果高斯椭圆覆盖该片元，就混合。</li>
+<li>
+<p>检查覆盖：高斯指数q小于阈值则抛弃。</p>
+<div class="arithmatex">\[
+\Sigma_{2D} = \begin{bmatrix}
+A &amp; B \\
+B &amp; C
+\end{bmatrix}
+\]</div>
+<div class="arithmatex">\[
+q= A(x-\mu_x)^2 + 2B(x-\mu_x)(y-\mu_y) + C(y-\mu_y)^2,(x,y,z)为片元中心屏幕空间坐标
+\]</div>
+<div class="arithmatex">\[
+\alpha = \alpha_0 \exp(-\frac{q}{2}), \alpha_0 为透明度
+\]</div>
+<ul>
+<li>混合逻辑：</li>
+</ul>
+<div class="arithmatex">\[
+C = \sum_i T_i\alpha_i c_i, T_i = \prod_{j&lt;i}(1-\alpha_j), c_i由相机到高斯中心的连线与球谐函数计算
+\]</div>
+</li>
+</ol>
+<p><center><img alt=图 11 src="../../images/3DGS1784096641331.png"></center></p>
+<blockquote>
+<p>图上只做示意，并未一比一还原渲染过程。</p>
+</blockquote>
+<ul>
+<li>经典3DGS没有考虑高斯椭球覆盖单片元的程度，没有抗锯齿。</li>
+<li>高斯椭圆覆盖的所有片元使用高斯中心的颜色计算（每个高斯椭球只计算一次颜色），片元采样点只决定颜色的贡献（ <span class="arithmatex">\(\alpha_i\)</span> ）。</li>
+</ul>
+<h2 id="13">1.3 训练过程<a class="headerlink" href="#13" title="Permanent link">&para;</a></h2>
+<p><strong>初始点云</strong></p>
+<ul>
+<li>使用SfM/COLMAP，从多张不同视角照片中，估计相机位姿和场景稀疏三维结构。然后随机初始化高斯椭球参数。</li>
+</ul>
+<p><strong>可微光栅化</strong></p>
+<blockquote>
+<p>对每一个片元：</p>
+</blockquote>
+<div class="arithmatex">\[
+C = \sum_i T_i\alpha_i c_i, T_i = \prod_{j&lt;i}(1-\alpha_j)
+\]</div>
+<div class="arithmatex">\[
+c_i = \sum_i^{16} k_i B_i(x_o, y_o,\mu_x^i, \mu_y^i),(x_o, y_o)为相机坐标
+\]</div>
+<div class="arithmatex">\[
+\alpha_i=\alpha_0 \exp(-\frac{A(x-\mu_x^i)^2 + 2B(x-\mu_x^i)(y-\mu_y^i) + C(y-\mu_y^i)^2}{2})
+\]</div>
+<div class="arithmatex">\[
+\Sigma_{2D} = J W \Sigma W^T J^T
+\]</div>
+<div class="arithmatex">\[
+\Sigma = R \begin{bmatrix}
+\lambda_x^2 &amp; 0 &amp; 0 \\
+0 &amp; \lambda_y^2 &amp; 0 \\
+0 &amp; 0 &amp; \lambda_z^2
+\end{bmatrix}R^T
+\]</div>
+<div class="arithmatex">\[
+R(\mathbf{q}) = \begin{bmatrix}
+1-2y^2-2z^2 &amp; 2xy-2wz &amp; 2xz+2wy \\
+2xy+2wz &amp; 1-2x^2-2z^2 &amp; 2yz-2wx \\
+2xz-2wy &amp; 2yz+2wx &amp; 1-2x^2-2y^2
+\end{bmatrix}
+\]</div>
+<p>在固定当前高斯集合、排序关系和可见性的前提下（静态场景），上述操作建立的 <span class="arithmatex">\((\lambda_x, \lambda_y, \lambda_z, \mu, x, y, z ,w , \alpha_0, \{k_i | i = 1,...,16\})\)</span> 与 C 的映射关系是由矩阵乘法、指数函数和球谐基函数组合而成的连续可微映射，所以可以通过反向传播优化这些参数。</p>
+<p><strong>计算损失反向传播优化参数</strong></p>
+<div class="arithmatex">\[
+\mathcal{L} = (1-\lambda)\|I_{render}-I_{gt}\|_1 + \lambda(1-\text{SSIM}(I_{render}, I_{gt}))
+\]</div>
+<div class="arithmatex">\[
+\text{SSIM}(x, y) = \frac{(2\mu_x\mu_y + C_1)(2\sigma_{xy} + C_2)}{(\mu_x^2+\mu_y^2+C_1)(\sigma_x^2+\sigma_y^2+C_2)}
+\]</div>
+<ul>
+<li><span class="arithmatex">\(\lambda\)</span> 通常取0.2</li>
+<li>SSIM：图像重建损失</li>
+</ul>
+<p><strong>训练过程</strong></p>
+<ol>
+<li>随机选择一个训练相机</li>
+<li>渲染图像</li>
+<li>计算损失</li>
+<li>反向传播</li>
+<li>累计可见高斯的二维中心梯度模长</li>
+<li>Adam更新高斯参数</li>
+<li>经过固定迭代轮次后计算平均梯度</li>
+<li>
+<div class="arithmatex">\[\bar{g_i} \geq \tau_g:\begin{cases}
+    尺度小 \to 克隆\\
+    尺度大 \to 分裂
+    \end{cases}\]</div>
+</li>
+<li>删除低透明度或过大的高斯</li>
+<li>清空统计，进入下一周期</li>
+</ol>
+<p><strong>高斯中心点克隆、分裂与删除</strong></p>
+<p><center><img alt=图 19 src="../../images/3DGS1784265390705.png" width=600></center></p>
+<blockquote>
+<p>经典3DGS会设置一个增密周期，经过一个loss计算和反向传播的周期后（T轮），根据高斯中心点屏幕空间坐标梯度决定分裂与克隆</p>
+</blockquote>
+<div class="arithmatex">\[
+\frac{\partial \mathcal{L}}{\partial \mu_{2D,i}}
+\]</div>
+<blockquote>
+<p>每次训练时累计梯度，记录被观察到的次数，最后计算平均梯度</p>
+</blockquote>
+<div class="arithmatex">\[
+\bar{g_i} = \frac{\sum_{j=1}^T \frac{\partial \mathcal{L}}{\partial \mu_{2D,i}}}{N_i}
+\]</div>
+<blockquote>
+<p>设置位置梯度阈值 <span class="arithmatex">\(\tau_g\)</span>和场景尺度百分比 <span class="arithmatex">\(\rho\)</span>，计算场景尺度 <span class="arithmatex">\(E\)</span> ，然后根据梯度大小和高斯缩放系数决定是否克隆或分裂。</p>
+</blockquote>
+<div class="arithmatex">\[
+\bold{c}_{\text{avg}} = \frac{1}{N}\sum_{j=1}^N \bold{c}_j, d_{\max}=\max_{j} \|\bold{c}_j\ - \bold{c}_{\text{avg}}\|_2,\bold{c}表示相机坐标
+\]</div>
+<blockquote>
+<p><span class="arithmatex">\(E\)</span> 就代表距离所有相机平均中心位置距离最远的相机距离平均中心距离的1.1倍。</p>
+</blockquote>
+<div class="arithmatex">\[
+E = 1.1d_{\max}
+\]</div>
+<div class="arithmatex">\[
+s_{\text{threshold}} = \rho E
+\]</div>
+<div class="arithmatex">\[
+s_i^{\max} = \max(\lambda_x, \lambda_y, \lambda_z)
+\]</div>
+<div class="arithmatex">\[
+\bar{g_i} \geq \tau_g \begin{cases}
+s_i^{\max} \leq s_{\text{threshold}}: 克隆\\
+s_i^{\max} &gt; s_{\text{threshold}}: 分裂
+\end{cases}
+\]</div>
+<ul>
+<li>克隆操作是在原地复制两个一模一样的高斯中心，然后让它们自己在后续的训练中逐渐分开。</li>
+<li>
+<p>分裂操作是在原始高斯椭球内随机采样2个点，缩放系数变换，其余参数继承，然后删除原始高斯椭球。</p>
+<div class="arithmatex">\[
+\mu_{i,k}^\prime \sim \mathcal{N}(\mu_{i,k}, \Sigma_{i,k})
+\]</div>
+<div class="arithmatex">\[
+s_{i,k}^{\prime} = \frac{s_i}{0.8N}
+\]</div>
+</li>
+<li>
+<p>删除操作的充分条件：<span class="arithmatex">\((\alpha_i &lt; 0.005)\)</span> || <span class="arithmatex">\((r_{i,\max}^{2D} &gt; r_{\max})\)</span> || <span class="arithmatex">\((\max(s_{x,i}, s_{y,i}, s_{z,i}) &gt; 0.1E)\)</span></p>
+<div class="arithmatex">\[
+\alpha_i = sigmoid(\alpha_0)
+\]</div>
+<div class="arithmatex">\[
+r_{i,\max}^{2D} = \max_{k} r_{i,k}^{2D}, k表示一段训练过程中的训练轮次
+\]</div>
+<div class="arithmatex">\[
+r_{i}^{2D} \approx 3\sqrt{\lambda_{\max}(\Sigma_{2D,i})}:投影协方差最大特征值
+\]</div>
+<div class="arithmatex">\[
+r_{\max} = 20 \text{pixel}
+\]</div>
+</li>
+</ul>
+<h1 id="2-2dgs">2. 2DGS<a class="headerlink" href="#2-2dgs" title="Permanent link">&para;</a></h1>
+<center><img alt=图 14 src="../../images/3DGS1784189536019.png" width=500></img></center>
+
+<blockquote>
+<p>2DGS椭圆</p>
+</blockquote>
+<h2 id="21-3dgs">2.1 3DGS的问题<a class="headerlink" href="#21-3dgs" title="Permanent link">&para;</a></h2>
+<p><strong>几何不一致性</strong></p>
+<center><img alt=图 13 src="../../images/3DGS1784183912665.png"></center>
+
+<blockquote>
+<p>（左）3DGS预估表面情况 （右）2DGS预估表面情况</p>
+</blockquote>
+<p>经典3DGS中，相同外观区域（一个高斯椭球或高斯椭圆面表示的区域），在不同视角渲染后，根据片元深度值反算对应的空间坐标（相机中心o+深度值*相机方向，深度=高斯中心深度），会发现反算出的表面不一致（如图上的蓝色和紫色线段，分别是a,b视角下渲染的像素反算出的空间连线）。这意味着，使用不同视角的渲染图像进行预估表面时会出现几何不一致的情况。</p>
+<p>2DGS将高斯椭球改为高斯圆片，避免了几何不一致的问题。</p>
+<p><strong>总结就是：3DGS无法从渲染结果中准确恢复物体表面</strong></p>
+<h2 id="22">2.2 渲染过程<a class="headerlink" href="#22" title="Permanent link">&para;</a></h2>
+<ul>
+<li>2D高斯的表示为</li>
+</ul>
+<div class="arithmatex">\[
+\mathcal{G} = \{\mathbf{p},\mathbf{t}_{u},\mathbf{t}_{v},\lambda_u,\lambda_v,\alpha_0,\{k_i | i = 1,...,16\}\}
+\]</div>
+<ul>
+<li><span class="arithmatex">\(\mathbf{p}\)</span>：高斯中心</li>
+<li><span class="arithmatex">\(\mathbf{t}_{u}\)</span> , <span class="arithmatex">\(\mathbf{t}_{v}\)</span>：面片两个正交切向量。</li>
+<li><span class="arithmatex">\(\lambda_u\)</span>, <span class="arithmatex">\(\lambda_v\)</span>：两个切向量方向缩放系数。</li>
+<li><span class="arithmatex">\(\alpha_0\)</span>：不透明度。</li>
+<li><span class="arithmatex">\(\{k_i | i = 1,...,16\}\)</span>：球谐函数系数</li>
+</ul>
+<div class="arithmatex">\[
+G(u,v) = \exp(-\frac{1}{2}(u^2+v^2))
+\]</div>
+<ul>
+<li>
+<p>2DGS使用光线求交来计算 <span class="arithmatex">\(G(x)\)</span> </p>
+</li>
+<li>
+<p>已知高斯中心集合 <span class="arithmatex">\(\{\mathbf{p}_i, \mathbf{t}_{u,i}, \mathbf{t}_{v,i}, \lambda_u^i, \lambda_v^i, \alpha_0^i, \{k_{ij} | j = 1,...,16\} \}\)</span></p>
+</li>
+<li>根据面片中心和局部切向基计算包围盒，投影到屏幕空间后登记tile。</li>
+</ul>
+<center><img alt=图 16 src="../../images/3DGS1784190283137.png" width=500></img></center>
+
+<ol>
+<li>光栅化和3DGS相似，也会按照高斯面片中心深度进行排序，然后由浅到深进行射线求交计算不透明度，然后混合。</li>
+</ol>
+<center><img alt=图 17 src="../../images/3DGS1784191125120.png" width=400></img></center>
+
+<blockquote>
+<p>射线求交</p>
+</blockquote>
+<div class="arithmatex">\[
+\vec{p} = \mathbf{o}+t_i \mathbf{d} - \mathbf{p}_i, \vec{p} \cdot \mathbf{n} = 0 \rightarrow t_i
+\]</div>
+<div class="arithmatex">\[
+u_i = \frac{\vec{p}_i \cdot \mathbf{t}_u}{\lambda_u}
+\]</div>
+<div class="arithmatex">\[
+v_i = \frac{\vec{p}_i \cdot \mathbf{t}_v}{\lambda_v}
+\]</div>
+<div class="arithmatex">\[
+G_i = \exp(-\frac{1}{2}(u_i^2+v_i^2))
+\]</div>
+<ul>
+<li>2DGS可以计算预估深度和法线</li>
+</ul>
+<div class="arithmatex">\[
+D(\mathbf{x}) = \sum_i T_i \alpha_i z_i
+\]</div>
+<div class="arithmatex">\[
+\mathbf{N(x)} = \sum_i T_i \alpha_i \mathbf{n}_i
+\]</div>
+<h2 id="23">2.3 训练过程<a class="headerlink" href="#23" title="Permanent link">&para;</a></h2>
+<ul>
+<li>2DGS的训练过程和3DGS相同，只是损失函数不同</li>
+</ul>
+<div class="arithmatex">\[
+\mathcal{L} = \mathcal{L}_{rgb} + \lambda_d \mathcal{L}_{depth} + \lambda_n \mathcal{L}_{normal-consistency}
+\]</div>
+<ul>
+<li>深度畸变损失：对高斯分散程度的惩罚</li>
+</ul>
+<div class="arithmatex">\[
+同一条射线上的多个高斯：z_1,z_2,...,z_N,混合权重：w_i = T_i\alpha_i
+\]</div>
+<div class="arithmatex">\[
+\mathcal{L}_{depth} = \sum_{i,j} w_i w_j |z_i - z_j|
+\]</div>
+<ul>
+<li>法线一致性损失：对高斯分散程度的惩罚</li>
+</ul>
+<center><img alt=图 18 src="../../images/3DGS1784193094822.png" width=400></img></center>
+
+<blockquote>
+<p>根据计算出来的相机深度图像，反算世界空间坐标点，然后根据x，y轴梯度向量计算法线。</p>
+</blockquote>
+<div class="arithmatex">\[
+N_D= k \frac{\partial \mathbf{P}}{\partial x} \times \frac{\partial \mathbf{P}}{\partial y}
+\]</div>
+<div class="arithmatex">\[
+\mathcal{L}_{normal-consistency} = \sum_{i} w_i(1-\mathbf{n}_i^T N_D)
+\]</div>
+<p><strong>2DGS引入深度畸变和法线一致性作为几何正则，训练面片贴合物体表面</strong></p>
+<p><strong>2DGS在透明和半透明物体的拟合上稍弱于3DGS，但经典3DGS效果也不是很理想</strong></p>
+<h1 id="3-4dgs">3. 4DGS<a class="headerlink" href="#3-4dgs" title="Permanent link">&para;</a></h1>
+<p>4DGS使用MLP拟合高斯椭球参数随时间的变化</p>
+<div class="arithmatex">\[
+\Delta G = (\Delta \mu, \Delta \mathbf{q}, \Delta \mathbf{s})
+\]</div>
+<ul>
+<li><span class="arithmatex">\(\Delta \mu = (\Delta \mu_x, \Delta \mu_y, \Delta \mu_z)\)</span>：高斯中心变化    </li>
+<li><span class="arithmatex">\(\Delta \mathbf{q} = (\Delta x, \Delta y, \Delta z, \Delta w)\)</span>：高斯椭球方向变化</li>
+<li><span class="arithmatex">\(\Delta \mathbf{s} = (\Delta s_x, \Delta s_y, \Delta s_z)\)</span>：高斯椭球缩放系数变化</li>
+</ul>
+<center><img alt=图 20 src="../../images/3DGS1784295494070.png" width=400></img></center>
+
+<blockquote>
+<p>三维空间中每一帧的高斯椭球中心都对应一个参数变化特征 <span class="arithmatex">\(\Delta G\)</span> </p>
+</blockquote>
+<p>使用一个函数表示特定时间 <span class="arithmatex">\(t\)</span> 下空间中每一个点的 <span class="arithmatex">\(\Delta G\)</span> ：</p>
+<div class="arithmatex">\[
+f(x,y,z, t) = \Delta G
+\]</div>
+<p>4DGS的基本思想就是训练一个MLP能够拟合这个函数。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../mathjax-config.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

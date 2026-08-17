@@ -1,0 +1,2990 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="技术学习笔记集合">
+      
+      
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>深度学习基础 - 学习笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../notestyle.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="学习笔记" class="md-header__button md-logo" aria-label="学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            学习笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              深度学习基础
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="学习笔记" class="md-nav__button md-logo" aria-label="学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    学习笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人工智能学习笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    人工智能学习笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    深度学习基础
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    深度学习基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11-u-net" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 U-Net
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-resnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 ResNet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Transformer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3 Transformer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.1 词嵌入与位置编码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.2 注意力机制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-encoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.3 Encoder
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-decoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.4 Decoder
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#135" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.5 训练与推理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        经典应用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数学基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    大模型应用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MeachineLearning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机器学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%81%9A%E7%B1%BB%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    聚类分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Games101 课程笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Games101 课程笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games101%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/chapter1%20%E7%9F%A9%E9%98%B5%E4%B8%8E%E5%8F%98%E6%8D%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter1 矩阵与变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games101%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/chapter2%20%E5%85%89%E6%A0%85%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter2 光栅化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games101%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/chapter3%20%E7%9D%80%E8%89%B2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter3 着色
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games101%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/chapter4%20%E5%87%A0%E4%BD%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter4 几何
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games101%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/chapter5%20%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter5 光线追踪
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games101%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/chapter6%20%E6%9D%90%E8%B4%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter6 材质
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games101%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/appendix1%20%E8%B5%B0%E6%A0%B7%E4%B8%8E%E5%8F%8D%E8%B5%B0%E6%A0%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix1 走样与反走样
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games101%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/appendix2%20%E6%B8%B2%E6%9F%93%E8%B4%A8%E9%87%8F%E4%B8%8E%E6%95%88%E7%8E%87/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix2 渲染质量与效率
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games101%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/appendix3%20GPU%E5%B8%A6%E5%AE%BD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix3 GPU带宽
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Games104 课程笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Games104 课程笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games104%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/lecture2%20%E5%BC%95%E6%93%8E%E6%9E%B6%E6%9E%84%E5%88%86%E5%B1%82/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lecture2 引擎架构分层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Games202 课程笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Games202 课程笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games202%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/lecture2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lecture2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games202%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/lecture3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lecture3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games202%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/lecture4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lecture4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Games202%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/lecture5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lecture5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenGL 学习笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OpenGL 学习笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenGL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/chapter1%20%E5%85%A5%E9%97%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter1 入门
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unity Shader 入门精要笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Unity Shader 入门精要笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E3%80%8AUnity%20Shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E3%80%8B%E7%AC%94%E8%AE%B0/chapter1%20%E6%B8%B2%E6%9F%93%E6%B5%81%E6%B0%B4%E7%BA%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter1 渲染流水线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E3%80%8AUnity%20Shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E3%80%8B%E7%AC%94%E8%AE%B0/chapter2%20UnityShader%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter2 UnityShader基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E3%80%8AUnity%20Shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E3%80%8B%E7%AC%94%E8%AE%B0/chapter3%20%E9%A1%B6%E7%82%B9%E7%89%87%E5%85%83%E7%9D%80%E8%89%B2%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter3 顶点片元着色器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E3%80%8AUnity%20Shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E3%80%8B%E7%AC%94%E8%AE%B0/chapter4%20%E5%85%89%E7%85%A7shader/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter4 光照shader
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E3%80%8AUnity%20Shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E3%80%8B%E7%AC%94%E8%AE%B0/chapter5%20%E7%BA%B9%E7%90%86%E8%B4%B4%E5%9B%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter5 纹理贴图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E3%80%8AUnity%20Shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E3%80%8B%E7%AC%94%E8%AE%B0/chapter6%20%E9%80%8F%E6%98%8E%E6%95%88%E6%9E%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter6 透明效果
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E3%80%8AUnity%20Shader%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81%E3%80%8B%E7%AC%94%E8%AE%B0/chpater7%20%E5%A4%8D%E6%9D%82%E5%85%89%E7%85%A7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter7 复杂光照
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    神经渲染
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    神经渲染
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%A5%9E%E7%BB%8F%E6%B8%B2%E6%9F%93/base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%A5%9E%E7%BB%8F%E6%B8%B2%E6%9F%93/NeRF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NeRF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%A5%9E%E7%BB%8F%E6%B8%B2%E6%9F%93/3DGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3DGS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    论文阅读笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    论文阅读笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/Transformer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transformer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    傅里叶变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/%E5%9B%BE%E8%AE%BA%E4%B8%8E%E7%BA%BF%E4%BB%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图论与线代
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/%E8%84%91%E7%94%B5%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    脑电大模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Effective C++
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Effective C++
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Effective%20C%2B%2B/chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11-u-net" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 U-Net
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-resnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 ResNet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Transformer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3 Transformer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.1 词嵌入与位置编码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.2 注意力机制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-encoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.3 Encoder
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-decoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.4 Decoder
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#135" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.5 训练与推理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        经典应用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="1">1. 网络架构<a class="headerlink" href="#1" title="Permanent link">&para;</a></h1>
+<h2 id="11-u-net">1.1 U-Net<a class="headerlink" href="#11-u-net" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>多尺度信息交换网络</p>
+</blockquote>
+<center><img alt=图 31 src="../../images/深度学习基础1785412504832.png"></center>
+
+<blockquote>
+<p>Encoder进行下采样，理解整体内容。Decoder上采样，恢复空间结构</p>
+</blockquote>
+<p><strong>下采样</strong></p>
+<blockquote>
+<p>对输入进行卷积，池化，缩小空间尺寸，增加通道数</p>
+</blockquote>
+<div class="arithmatex">\[
+H\times W \times 3 \to H\times W \times 64 \to H\times W \times 128 \to H\times W \times 256 \to H\times W \times 512
+\]</div>
+<ul>
+<li>获得更强的语义理解</li>
+<li>扩大感受野</li>
+<li>但空间细节丢失</li>
+</ul>
+<p><strong>上采样</strong></p>
+<blockquote>
+<p>对特征图进行上采样，恢复空间尺寸，生成与输入尺寸接近的输出</p>
+</blockquote>
+<div class="arithmatex">\[
+H\times W \times 512 \to H\times W \times 256 \to H\times W \times 128 \to H\times W \times C
+\]</div>
+<p><strong>跳跃连接</strong></p>
+<blockquote>
+<p>在Decoder中，将上采样后的特征图与下采样前特征图进行拼接，以保留空间信息。</p>
+</blockquote>
+<p><strong>Concat(Along Channels)</strong> : </p>
+<div class="arithmatex">\[
+Concat(H\times W \times C_1, H\times W \times C_2) \to H\times W \times (C_1+C_2)
+\]</div>
+<p>跳跃连接后继续卷积，调整通道数</p>
+<h2 id="12-resnet">1.2 ResNet<a class="headerlink" href="#12-resnet" title="Permanent link">&para;</a></h2>
+<center><img alt=图 32 src="../../images/深度学习基础1785415064289.png" width="500"></img></center>
+
+<blockquote>
+<p>残差块：将输入加到输出上，解决梯度消失问题</p>
+</blockquote>
+<h2 id="13-transformer">1.3 Transformer<a class="headerlink" href="#13-transformer" title="Permanent link">&para;</a></h2>
+<center><img alt=图 37 src="../../images/深度学习基础1785485109080.png"></center>
+
+<h3 id="131">1.3.1 词嵌入与位置编码<a class="headerlink" href="#131" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>词嵌入是准备一个隐藏表示，或者说Transformer的内部向量表示。</p>
+</blockquote>
+<p>不同输入的输入嵌入获取方式不同：
+- 文本输入：<span class="arithmatex">\(\mathbf{z}_i = E[token_i]\)</span> ,在词嵌入表中使用词序号查表。
+- 图像输入：<span class="arithmatex">\(\mathbf{z}_i = \mathbf{z}_i W + b\)</span> , 对图像进行线性变换，得到图像的向量表示。
+- 音频输入：<span class="arithmatex">\(\mathbf{z}_i = f_{\text{audio}(\mathbf{x}_i)}\)</span> , 频谱分帧，线性变化，卷积映射。</p>
+<blockquote>
+<p>位置编码和词嵌入相加而非拼接是工程设计</p>
+</blockquote>
+<div class="arithmatex">\[
+PE(t,2i) = \sin (\frac{t}{10000^{2i/d_{model}}})
+\]</div>
+<div class="arithmatex">\[
+PE(t,2i+1) = \cos (\frac{t}{10000^{2i/d_{model}}})
+\]</div>
+<ul>
+<li>每一个频率占两个维度</li>
+</ul>
+<h3 id="132">1.3.2 注意力机制<a class="headerlink" href="#132" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+\text{Attention}(Q,K,V) = \text{softmax}(\frac{QK^T}{\sqrt{d_k}}) \cdot V
+\]</div>
+<center><img alt=图 38 src="../../images/深度学习基础1785554998750.png"></center>
+
+<ul>
+<li>
+<p><span class="arithmatex">\(V\)</span> : n个词嵌入线性变换得到</p>
+<div class="arithmatex">\[
+X = \begin{bmatrix}
+\mathbf{z}_1 \\
+\mathbf{z}_2 \\
+\vdots \\
+\mathbf{z}_n
+\end{bmatrix} \in \mathbb{R}^{n\times d_{model}}
+\]</div>
+<div class="arithmatex">\[
+V = X \cdot W_V = \begin{bmatrix}
+\mathbf{z}_1 \cdot W_V \\
+\mathbf{z}_2 \cdot W_V \\
+\vdots \\
+\mathbf{z}_n \cdot W_V
+\end{bmatrix} \in \mathbb{R}^{n\times d_{model}}
+\]</div>
+</li>
+<li>
+<p><span class="arithmatex">\(Q,K\)</span>: 对输入 <span class="arithmatex">\(X\)</span> 进行双线性变换，然后点积得到双线性匹配。</p>
+<div class="arithmatex">\[
+Q = X \cdot W_Q, K = X \cdot W_K
+\]</div>
+</li>
+<li>
+<p>不使用匹配矩阵直接计算 <span class="arithmatex">\(X X^T\)</span> ，只能得到原始欧氏空间的相似性。</p>
+</li>
+<li>单个 <span class="arithmatex">\(W\)</span> 线性变换得到的是 <span class="arithmatex">\(X WW^T X^T\)</span> ， 只能得到一个对称，半正定的匹配矩阵，表示能力有限。</li>
+</ul>
+<p><strong>Scaled Dot-product Attention</strong></p>
+<div class="arithmatex">\[
+\text{Attention}(Q,K,V) = \text{softmax}(\frac{QK^T}{\sqrt{d_k}} + M) \cdot V
+\]</div>
+<ul>
+<li><span class="arithmatex">\(d_k\)</span>：Q,K,V的最后一个维度，即向量的维度。</li>
+<li>
+<p><span class="arithmatex">\(M\)</span>：因果掩码，在Decoder中用于防止训练时模型看未来信息。</p>
+<div class="arithmatex">\[
+\begin{bmatrix}
+0 &amp; -\infty &amp; \dots &amp; -\infty \\
+0 &amp; 0 &amp; \dots &amp; -\infty \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \dots &amp; 0 \\
+\end{bmatrix}
+\]</div>
+</li>
+</ul>
+<p><strong>自注意力</strong></p>
+<center><img alt=图 39 src="../../images/深度学习基础1785589712253.png"></center>
+
+<blockquote>
+<p><strong>Transformer的特点就是使用自注意力直接混合所有信息，比RNN和CNN高效。</strong></p>
+</blockquote>
+<p><strong>多头注意力</strong></p>
+<center><img alt=图 40 src="../../images/深度学习基础1785590317071.png"></center>
+
+<blockquote>
+<p><strong>将Q/K/V拆分后并行计算，能生成多个注意力矩阵，能学习多种不同的信息匹配。</strong></p>
+</blockquote>
+<h3 id="133-encoder">1.3.3 Encoder<a class="headerlink" href="#133-encoder" title="Permanent link">&para;</a></h3>
+<p><strong>前馈神经网络</strong></p>
+<ul>
+<li>
+<p>经典Transformer使用两层全连接层，使用ReLU激活函数</p>
+<div class="arithmatex">\[
+512 \to 2048 \to 512
+\]</div>
+</li>
+</ul>
+<p><strong>归一化层</strong></p>
+<ul>
+<li>控制每个Token隐藏向量的数值尺度，使模型更稳定，易于训练。</li>
+<li>
+<p>经典Transformer使用Post-Norm</p>
+<div class="arithmatex">\[
+y = \text{LayerNorm}(x + F(x))
+\]</div>
+</li>
+<li>
+<p>大模型通常用Pre-Norm</p>
+<div class="arithmatex">\[
+y = x+F(\text{LayerNorm}(x))
+\]</div>
+</li>
+<li>
+<p>pre-norm通常让梯度可以顺畅沿残差路径传播</p>
+</li>
+</ul>
+<h3 id="134-decoder">1.3.4 Decoder<a class="headerlink" href="#134-decoder" title="Permanent link">&para;</a></h3>
+<center><img alt=图 41 src="../../images/深度学习基础1785750647701.png" width="600"></img></center>
+
+<blockquote>
+<p>多层Encoder的最终输出作为所有Decoder的输入</p>
+</blockquote>
+<p><strong>经典Transformer最后的Linear层使用的矩阵参数和嵌入矩阵相同</strong></p>
+<div class="arithmatex">\[
+W_{Embedding} = W_{Linear}^T \in \mathbb{R}^{n \times 512}
+\]</div>
+<h3 id="135">1.3.5 训练与推理<a class="headerlink" href="#135" title="Permanent link">&para;</a></h3>
+<center><img alt=图 42 src="../../images/深度学习基础1785754180918.png"></center>
+
+<blockquote>
+<p>训练流程</p>
+</blockquote>
+<ul>
+<li>训练时会将目标输出 <span class="arithmatex">\(BOS, y_1, \cdots, y_{m-1}\)</span> 一次性作为Decoder是输入，然后使用因果掩码防止模型看未来信息。</li>
+<li>Decoder会一次性生成所有输出，输出为 <span class="arithmatex">\(P_{t}[y_i]\)</span> ，即最后的概率估计中目标词 <span class="arithmatex">\(y_i\)</span> 的概率。</li>
+<li>
+<p>计算损失 </p>
+<div class="arithmatex">\[
+L = -\sum_{i=1}^{m} \log P_{t}[y_i]
+\]</div>
+</li>
+</ul>
+<center><img alt=图 43 src="../../images/深度学习基础1785755318342.png"></center>
+
+<blockquote>
+<p>推理流程</p>
+</blockquote>
+<h3 id="_1">经典应用<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>代表模型</th>
+<th>信息可见范围</th>
+<th>最擅长</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Encoder-only</td>
+<td>BERT</td>
+<td>左右双向</td>
+<td>理解、分类、检索</td>
+</tr>
+<tr>
+<td>Decoder-only</td>
+<td>GPT</td>
+<td>只能看前文</td>
+<td>自回归生成、LLM</td>
+</tr>
+<tr>
+<td>Encoder–Decoder</td>
+<td>T5、BART</td>
+<td>输入双向、输出单向</td>
+<td>翻译、摘要、转换</td>
+</tr>
+<tr>
+<td>Vision Transformer</td>
+<td>ViT、Swin</td>
+<td>图像 Patch 之间</td>
+<td>图像理解</td>
+</tr>
+<tr>
+<td>Detection Transformer</td>
+<td>DETR</td>
+<td>图像与目标查询之间</td>
+<td>目标检测</td>
+</tr>
+<tr>
+<td>Diffusion Transformer</td>
+<td>DiT</td>
+<td>噪声潜变量 Patch 之间</td>
+<td>图像和视频生成</td>
+</tr>
+</tbody>
+</table>
+<h1 id="2">2.生成式模型<a class="headerlink" href="#2" title="Permanent link">&para;</a></h1>
+<h2 id="21-vae">2.1 VAE<a class="headerlink" href="#21-vae" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>(Variational Autoencoder, VAE)变分自编码器，是一种潜变量生成模型。它既能像普通自编码器一样重构输入，也能从一个简单的潜变量分布中采样，生成新的数据。</p>
+</blockquote>
+<h3 id="211">2.1.1 自编码器<a class="headerlink" href="#211" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>数据降维，压缩，特征提取，去噪，异常检测</p>
+</blockquote>
+<center><img alt=图 3 src="../../images/深度学习基础1784956471566.png" width="500"></img></center>
+
+<div class="arithmatex">\[
+z=f_\phi(x)
+\]</div>
+<div class="arithmatex">\[
+\hat{x}=g_\theta(z)
+\]</div>
+<div class="arithmatex">\[
+\mathcal L_{\mathrm{AE}}=\left\|x-\hat{x}\right\|_2^2
+\]</div>
+<ul>
+<li><span class="arithmatex">\(f,g\)</span> ：结构自由，可以是CNN，MLP，Transformer等，且两者可以完全不同</li>
+</ul>
+<p>自编码器训练Encoder提取特征，然后使用Decoder尝试将特征重建为原始数据来检测特征是否有效。自编码其可以同时训练编码器和解码器。</p>
+<p>实际上，为了避免Decoder过度猜测导致Encoder提取特征能力差，会限制Decoder容量、对z增加噪声等方式增加约束。</p>
+<h3 id="212">2.1.2 变分自编码器<a class="headerlink" href="#212" title="Permanent link">&para;</a></h3>
+<center><img alt=图 2 src="../../images/深度学习基础1784883408631.png" width="500"></img></center>
+
+<blockquote>
+<p>实践发现自编码器在使用新潜变量直接进行生成时效果很差，比如在已训练出的潜变量附近采样，并不能得到于对应训练数据相似的结果，这显示<strong>潜变量分布不连续</strong>。</p>
+</blockquote>
+<center><img alt=图 8 src="../../images/深度学习基础1785047344389.png"></center>
+
+<blockquote>
+<p>理想情况下，VAE中编码器不再只输出潜变量z，而是假设已知潜变量 <span class="arithmatex">\(z\)</span> 先验分布 <span class="arithmatex">\(p(z)\)</span> ，然后拟合条件概率 <span class="arithmatex">\(p(z|x)\)</span> (实际是使用 <span class="arithmatex">\(q_{\phi}(z|x)\)</span> 进行近似 ) 。 对每个 <span class="arithmatex">\(x_i\)</span> ：获得 <span class="arithmatex">\(p(z|x_i)\)</span> (也就是 <span class="arithmatex">\(q_{\phi}(z|x_i)\)</span> ) 后，采样 <span class="arithmatex">\(z\)</span> ，训练解码器拟合 <span class="arithmatex">\(p(x|z)\)</span> ( 即 <span class="arithmatex">\(p_{\theta}(x|z)\)</span> ) 。 最后求 <span class="arithmatex">\(p_{\theta}(x) = \int p_{\theta}(x|z)p(z)\,dz\)</span>，优化 <span class="arithmatex">\(\theta 和 \phi\)</span> 到 <span class="arithmatex">\(p_{\theta}(x_i)\)</span> 最大。 </p>
+</blockquote>
+<p><strong>理想情况</strong></p>
+<ol>
+<li>编码器拟合条件概率分布 <span class="arithmatex">\(p(z|x)\)</span>，通过输入 <span class="arithmatex">\(x\)</span> 获取潜变量或者特征的分布。</li>
+<li>解码器从 <span class="arithmatex">\(p(z|x)\)</span> 中采样 <span class="arithmatex">\(z\)</span> ，训练解码器拟合 <span class="arithmatex">\(p(x|z)\)</span>。</li>
+</ol>
+<p>这里有几个问题：
+1. <span class="arithmatex">\(p(z|x)\)</span> 函数形态不明，拟合困难。
+2. <span class="arithmatex">\(p(z)\)</span> 先验分布未知，无法直接使用。
+3. <span class="arithmatex">\(p(x|z)\)</span> 需要进行大量采样，计算复杂度高，梯度信号弱。</p>
+<p><strong>基本假设</strong></p>
+<ul>
+<li>
+<p><span class="arithmatex">\(z\)</span> 是标准正态分布</p>
+<div class="arithmatex">\[
+p(z) = \mathcal{N}(0, I)
+\]</div>
+</li>
+<li>
+<p><span class="arithmatex">\(q_{\phi}(z|x)\)</span> 是高斯分布</p>
+<div class="arithmatex">\[
+q_\phi(z|x) = \mathcal{N}(\mu_\phi(x), \text{diag}(\sigma_\phi^2(x)))
+\]</div>
+</li>
+<li>
+<p>不直接计算 <span class="arithmatex">\(p(x)\)</span> ，而是优化<strong>ELBO</strong>(Evidence Lower Bound, 证据下界/边缘似然下界)</p>
+<div class="arithmatex">\[
+\mathcal L_{\mathrm{ELBO}}(\theta,\phi;x) = \underbrace{\mathbb E_{q_\phi(z\mid x)}\!\left[\log p_\theta(x\mid z)\right]}_{\text{重建项}}\ - \underbrace{D_{\mathrm{KL}}\!\left(q_\phi(z\mid x)\Vert p(z)\right)}_{\text{正则项}}
+\]</div>
+</li>
+<li>
+<p>这里虽然每次训练只进行一次采样，但在多轮训练后也能模拟出蒙特卡洛采样的效果</p>
+</li>
+</ul>
+<center><img alt=图 10 src="../../images/深度学习基础1785050699187.png"></center>
+
+<p><strong>训练流程</strong></p>
+<center><img alt=图 9 src="../../images/深度学习基础1785049872582.png" width="600"></img></center>
+
+<ol>
+<li>初始化后，输入 <span class="arithmatex">\(x_i\)</span></li>
+<li>
+<p>编码器输出 <span class="arithmatex">\(q_\phi(z|x_i)\)</span> 参数 <span class="arithmatex">\(\mu_\phi(x_i), \log \sigma_\phi^2(x_i)\)</span></p>
+<div class="arithmatex">\[
+q_\phi(z\mid x)=\mathcal N\left(z;\mu_\phi(x),\operatorname{diag}\bigl(\sigma_\phi^2(x)\bigr)\right)
+\]</div>
+</li>
+<li>
+<p>从 <span class="arithmatex">\(q_\phi(z|x_i)\)</span> 中采样 <span class="arithmatex">\(z_j\)</span></p>
+<div class="arithmatex">\[
+z = \mu_{\phi}(x_i) + \sigma_{\phi}(x_i) \odot  \epsilon, \epsilon \sim \mathcal{N}(0, I)
+\]</div>
+</li>
+<li>
+<p>将 <span class="arithmatex">\(z_j\)</span> 输入解码器，生成 <span class="arithmatex">\(p_\theta(x|z_j)\)</span>，这里可以是高斯分布、伯努利分布等</p>
+<div class="arithmatex">\[
+\mathbb E_{q_\phi(z\mid x)}\!\left[\log p_\theta(x\mid z)\right] \approx \log p_{\theta}(x_i | z_j)
+\]</div>
+</li>
+<li>
+<p>求ELBO并反向传播优化 <span class="arithmatex">\(\theta\)</span> 和 <span class="arithmatex">\(\phi\)</span></p>
+<div class="arithmatex">\[
+\mathcal L_{\mathrm{ELBO}}(\theta,\phi;x)\leq\log p_\theta(x)
+\]</div>
+<div class="arithmatex">\[
+\mathcal L_{\mathrm{ELBO}}(\theta,\phi;x)=\mathbb E_{q_\phi(z\mid x)}\!\left[\log p_\theta(x\mid z)\right]-D_{\mathrm{KL}}\!\left(q_\phi(z\mid x)\Vert p(z)\right)
+\]</div>
+<div class="arithmatex">\[
+\mathbb E_{q_\phi(z\mid x)}\!\left[\log p_\theta(x\mid z)\right] = \int q_\phi(z\mid x) \log p_\theta(x | z)\,dz
+\]</div>
+</li>
+</ol>
+<p><strong>ELBO推导</strong></p>
+<div class="arithmatex">\[
+\log p_\theta(x)=\log\int p_\theta(x,z)\,dz
+\]</div>
+<div class="arithmatex">\[
+\log p_\theta(x)=\log\int q_\phi(z\mid x)\frac{p_\theta(x,z)}{q_\phi(z\mid x)}\,dz
+\]</div>
+<div class="arithmatex">\[
+\log p_\theta(x)=\log\mathbb E_{q_\phi(z\mid x)}\!\left[\frac{p_\theta(x,z)}{q_\phi(z\mid x)}\right]
+\]</div>
+<div class="arithmatex">\[
+\log\mathbb E[Y]\geq\mathbb E[\log Y]
+\]</div>
+<div class="arithmatex">\[
+\log p_\theta(x)\geq\mathbb E_{q_\phi(z\mid x)}\!\left[\log\frac{p_\theta(x,z)}{q_\phi(z\mid x)}\right]
+\]</div>
+<div class="arithmatex">\[
+\mathcal L_{\mathrm{ELBO}}=\mathbb E_{q_\phi(z\mid x)}\!\left[\log p_\theta(x,z)-\log q_\phi(z\mid x)\right]
+\]</div>
+<div class="arithmatex">\[
+\log p_\theta(x,z)=\log p_\theta(x\mid z)+\log p(z)
+\]</div>
+<div class="arithmatex">\[
+\mathcal L_{\mathrm{ELBO}}=\mathbb E_{q_\phi(z\mid x)}\!\left[\log p_\theta(x\mid z)\right]+\mathbb E_{q_\phi(z\mid x)}\!\left[\log p(z)-\log q_\phi(z\mid x)\right]
+\]</div>
+<div class="arithmatex">\[
+D_{\mathrm{KL}}\!\left(q_\phi(z\mid x)\Vert p(z)\right)=\mathbb E_{q_\phi(z\mid x)}\!\left[\log q_\phi(z\mid x)-\log p(z)\right]
+\]</div>
+<div class="arithmatex">\[
+\mathcal L_{\mathrm{ELBO}}=\mathbb E_{q_\phi(z\mid x)}\!\left[\log p_\theta(x\mid z)\right]-D_{\mathrm{KL}}\!\left(q_\phi(z\mid x)\Vert p(z)\right)
+\]</div>
+<p><strong>重参数化</strong></p>
+<p>将随机采样改为 <span class="arithmatex">\(z = \mu + \sigma \epsilon, \epsilon \sim \mathcal{N}(0, I)\)</span> ,使其可微。</p>
+<h2 id="22-gan">2.2 GAN<a class="headerlink" href="#22-gan" title="Permanent link">&para;</a></h2>
+<center><img alt=图 29 src="../../images/深度学习基础1785410211406.png" width="500"></img></center>
+
+<blockquote>
+<p>GAN由生成器和判别器构成，生成器和判别器结构自由，依据具体任务设计</p>
+</blockquote>
+<center><img alt=图 30 src="../../images/深度学习基础1785410731066.png"></center>
+
+<blockquote>
+<p>交替训练，先训练判别器，再训练生成器</p>
+</blockquote>
+<p><strong>训练</strong></p>
+<ol>
+<li>
+<p>采集一批真实样本，一批由随机噪声生成的假样本，训练判别器（只更新判别器参数 <span class="arithmatex">\(\phi\)</span>）</p>
+<div class="arithmatex">\[
+L_D = - \frac{1}{m} \sum_{i=1}^m \log D_{\phi}(x_i) - \frac{1}{m} \sum_{i=1}^m \log (1 - D_{\phi}(G_{\theta}(z_i)))
+\]</div>
+</li>
+<li>
+<p>采集一批随机噪声，训练生成器（只更新生成器参数 <span class="arithmatex">\(\theta\)</span>）</p>
+<div class="arithmatex">\[
+L_G = \frac{1}{m} \sum_{i=1}^m \log D_{\phi}(G_{\theta}(z_i))
+\]</div>
+</li>
+</ol>
+<h2 id="23-diffusion">2.3 diffusion<a class="headerlink" href="#23-diffusion" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>给离散的原始数据分布施加不同强度的噪声，将概率梯度铺满整个空间。训练神经网络拟合不同强度的高斯噪声施加后（即不同方差大小）的概率梯度场，形成一张随强度 <span class="arithmatex">\(t\)</span> 动态变化的地图。推理时，从初始点出发，逐渐使用更高频率的地图，最终得到一个符合原始数据分布的样本。</p>
+</blockquote>
+<p><strong>Score Matching</strong></p>
+<center><img alt=图 16 src="../../images/深度学习基础1785219495322.png"></center>
+
+<blockquote>
+<p>（1）在二维空间中的数据分布 （2）数据采样点概率分布（3）采样点概率分布对数（4）采样点概率分布对数的梯度</p>
+</blockquote>
+<p>早期的 score matching 学习数据分布 <span class="arithmatex">\(p(x)\)</span> 的梯度 <span class="arithmatex">\(s(x) = \nabla_x \log p(x)\)</span>，但由于数据采样点是离散的，实际 <span class="arithmatex">\(p(x) = \delta(x)\)</span> (狄拉克函数) ，采样点附近梯度为 <span class="arithmatex">\(\infty\)</span> ，<span class="arithmatex">\(s(x)\)</span> 极其不稳定。</p>
+<p><strong>Denoising Score Matching</strong></p>
+<p>给数据点 <span class="arithmatex">\(x_i\)</span> 添加噪声 <span class="arithmatex">\(\epsilon, \epsilon \sim \mathcal{N}(0, I)\)</span>, 得到平滑分布 </p>
+<div class="arithmatex">\[
+p(x_i + \epsilon) = \mathcal{N}(x_i, I)
+\]</div>
+<center><img alt=图 14 src="../../images/深度学习基础1785210369883.png"></center>
+
+<blockquote>
+<p>理论上在数据空间中的任意一点沿着 <span class="arithmatex">\(s(x)\)</span> 方向移动，就能找到一个合适的数据</p>
+</blockquote>
+<p>从某一起点出发，沿着 <span class="arithmatex">\(s(x)\)</span> 方向移动，每次结果都停留在同一个概率高峰（ <span class="arithmatex">\(s(x) = 0\)</span> ），Langevin Dynamics给移动增加噪声项来解决这个问题</p>
+<p><strong>Langevin Dynamics</strong></p>
+<div class="arithmatex">\[
+x_{t+1} = x_t + \eta s(x_t) + \sqrt{2\eta}\epsilon, \epsilon \sim \mathcal{N}(0,I)
+\]</div>
+<center><img alt=图 15 src="../../images/深度学习基础1785219009962.png" width="500"></img></center>
+
+<p><strong>高斯分布性质</strong></p>
+<ul>
+<li>容易采样，高维表现好</li>
+<li><strong>多步噪声叠加仍保持高斯形式</strong></li>
+</ul>
+<div class="arithmatex">\[
+x_t = x_0 + \sum_{i=0}^{t-1} \epsilon, \epsilon \sim \mathcal{N}(0,\sigma^2)
+\]</div>
+<div class="arithmatex">\[
+x_t \sim \mathcal{N}(x_0 + \sum_{i=0}^{t-1} \epsilon, (t-1)\sigma^2)
+\]</div>
+<p>不难发现，如果不断增加噪声，<span class="arithmatex">\(x_t\)</span> 遵循的分布方差会越来越大，<span class="arithmatex">\(x_t\)</span> 会越走越远，可能会脱离数据分布。
+<strong>强噪声会损失数据细节，弱噪声会导致梯度不稳定，t较小时，距离数据较远的地方梯度过低；t较大时，数据分布频率较低，细节模糊。</strong></p>
+<p><strong>diffusion</strong></p>
+<blockquote>
+<p>diffusion使用不同强度噪声的地图</p>
+</blockquote>
+<div class="arithmatex">\[
+x_t = \sqrt{\alpha_t}x_{t-1} + \sqrt{1-\alpha_t} \epsilon, \epsilon \sim \mathcal{N}(0, I)
+\]</div>
+<div class="arithmatex">\[
+X_{\infty} \sim \mathcal{N}(0, I)
+\]</div>
+<center><img alt=图 17 src="../../images/深度学习基础1785222430164.png"></center>
+
+<blockquote>
+<p>使用 <span class="arithmatex">\(\alpha_t = \prod (1-\beta_t)\)</span> 可以让分布更接近高斯分布</p>
+</blockquote>
+<center><img alt=图 18 src="../../images/深度学习基础1785223509705.png"></center>
+
+<blockquote>
+<p>从t=0 到 t=1000，<span class="arithmatex">\(x_t\)</span> 的概率分布变化：这里是将每个x看作标准高斯分布中心，然后求和归一化后得到的概率分布。这张图也对应了不同 t 的 <span class="arithmatex">\(p_t(x)\)</span> 分布，也是训练数据的分布。</p>
+</blockquote>
+<center><img alt=图 19 src="../../images/深度学习基础1785223751981.png" width="400"></img></center>
+
+<blockquote>
+<p>t = 0 的初始概率分布：其中的小圆点代表采样的训练数据，整体分布可以看作数据分布 <span class="arithmatex">\(p(x)\)</span></p>
+</blockquote>
+<center><img alt=图 20 src="../../images/深度学习基础1785223827846.png" width="400"></img></center>
+
+<blockquote>
+<p>t= 1000 的概率分布：整体分布以及近似标准高斯分布，即退化为噪声</p>
+</blockquote>
+<p><strong>训练</strong></p>
+<center><img alt=图 26 src="../../images/深度学习基础1785399544798.png"></center>
+
+<blockquote>
+<p>(a) 加噪过程 (b) 等效加噪 (c) 推理过程</p>
+</blockquote>
+<ul>
+<li>加噪过程：图上对x_t加噪，就是先削弱信号，得到蓝色圆点 <span class="arithmatex">\(\sqrt{\alpha_1}x_0\)</span> ，然后施加噪声 <span class="arithmatex">\(\sqrt{1-\alpha_1}\epsilon\)</span></li>
+<li>等效加噪：经过t次操作得到的 <span class="arithmatex">\(x_t\)</span> ， 可以写为 <span class="arithmatex">\(x_t = \sqrt{\bar{\alpha}_t}x_{t-1} + \sqrt{1-\bar{\alpha}_t}\epsilon_t\)</span> </li>
+<li>
+<p>推理过程：给出噪声数据 <span class="arithmatex">\(x_t\)</span> , 经过t轮去噪，就能得到生成数据了。</p>
+<div class="arithmatex">\[
+\hat{x}_0 = \frac{x_t - \sqrt{1- \bar{\alpha}}_t \epsilon_{\theta}(x_t, t)}{\sqrt{\bar{\alpha}_t}}
+\]</div>
+<div class="arithmatex">\[
+\hat{x}_{t-1} = \frac{\sqrt{\bar{\alpha}_{t-1}}\beta_t}{1-\bar{\alpha}_t} x_0 + \frac{\sqrt{\bar{\alpha}_{t}}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}x_t + \beta_t z, z\sim \mathcal{N}(0,I)
+\]</div>
+</li>
+</ul>
+<blockquote>
+<p>每次计算 <span class="arithmatex">\(x_t = \sqrt{\alpha_t}x_{t-1} + \sqrt{1-\alpha_t}\epsilon_t\)</span> 都会得到一个训练数据 <span class="arithmatex">\((x_t, t, \epsilon_t)\)</span> ，这里的 <span class="arithmatex">\(\epsilon_t\)</span> 指的是该数据点的噪声向量，与梯度的关系为</p>
+</blockquote>
+<div class="arithmatex">\[
+s(x_t, t) = - \frac{\epsilon_t}{\sqrt{1-\bar{\alpha}_t}}
+\]</div>
+<ul>
+<li><span class="arithmatex">\(s(x_t, t)\)</span> =  <span class="arithmatex">\(\nabla_{x} \log p_{t}(x)\)</span> </li>
+<li><span class="arithmatex">\(p_t(x)\)</span> 通过以 <span class="arithmatex">\(\sqrt{\alpha_t} x_{t-1}^i\)</span> 为中心的高斯分布求和得到</li>
+</ul>
+<center><img alt=图 27 src="../../images/深度学习基础1785402137058.png"></center>
+
+<blockquote>
+<p>从 <span class="arithmatex">\(t=0\)</span> 到 <span class="arithmatex">\(t=20\)</span> 的训练数据，每个小圆点代表一个训练数据，每个 <span class="arithmatex">\(t\)</span> 对应的数据点数量等于训练轮次（每轮训练都会有一条马尔可夫链，链上每一个路径点都对应一个训练数据）。数据点对应的连线就是该坐标的<strong>等效噪声向量</strong>。</p>
+</blockquote>
+<p>只要训练轮次足够多，噪声向量就能铺满整个空间，神经网络就能拟合 不同 <span class="arithmatex">\(t\)</span> 对应的噪声向量场。而噪声向量场可以转化成梯度向量场</p>
+<p><strong>损失函数：</strong></p>
+<div class="arithmatex">\[
+L(x_t, t, \epsilon) = ||\epsilon - \epsilon_{\theta}(x_t, t)||^2
+\]</div>
+<p><strong>推理</strong></p>
+<center><img alt=图 22 src="../../images/深度学习基础1785243352840.png"></center>
+
+<blockquote>
+<p><span class="arithmatex">\(x_t\)</span> 从 <span class="arithmatex">\(t=20\)</span> 开始，沿着 <span class="arithmatex">\(p_t(x)\)</span> 的梯度方向进行移动，知道最后输出 <span class="arithmatex">\(x_{0}\)</span></p>
+</blockquote>
+<p><strong>结尾</strong></p>
+<blockquote>
+<p>Diffusion会将图像像素颜色进行归一化到 <span class="arithmatex">\([-1, 1]\)</span> 范围，然后进行加噪。传统噪声预测网络为U-Net，新方法则使用Diffusion Transformer。</p>
+</blockquote>
+<h1 id="3">3. 激活函数<a class="headerlink" href="#3" title="Permanent link">&para;</a></h1>
+<p><strong>Sigmoid</strong></p>
+<center><img alt=图 33 src="../../images/深度学习基础1785416508690.png"></center>
+
+<div class="arithmatex">\[
+\sigma(x) = \frac{1}{1+\exp(-x)}
+\]</div>
+<ul>
+<li>常用于概率或者门控强度</li>
+<li>连续，平滑，可导</li>
+<li>缺点：</li>
+<li>x绝对值较大时易饱和</li>
+<li>输出不以0为中心</li>
+<li>容易梯度消失</li>
+</ul>
+<p><strong>Tanh</strong></p>
+<center><img alt=图 34 src="../../images/深度学习基础1785416584006.png"></center>
+
+<div class="arithmatex">\[
+\tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}
+\]</div>
+<ul>
+<li>连续，平滑，可导</li>
+<li>以0为中心，适合作为隐藏层</li>
+<li>缺点：</li>
+<li>梯度消失和饱和</li>
+</ul>
+<p><strong>ReLU</strong></p>
+<center><img alt=图 35 src="../../images/深度学习基础1785416614250.png"></center>
+
+<div class="arithmatex">\[
+\text{ReLU}(x) = \max(0, x)
+\]</div>
+<ul>
+<li>计算简单</li>
+<li>适合稀疏激活</li>
+<li>可以缓解梯度消失</li>
+<li>缺点：</li>
+<li>负半轴梯度为0，可能导致神经元死亡</li>
+<li>不光滑</li>
+</ul>
+<p><strong>Leaky ReLU</strong></p>
+<center><img alt=图 36 src="../../images/深度学习基础1785416711723.png"></center>
+
+<div class="arithmatex">\[
+\text{Leaky ReLU}(x) = \begin{cases} \alpha x &amp; x &lt; 0 \\ x &amp; x \ge 0 \end{cases}
+\]</div>
+<p><strong>Softmax</strong></p>
+<div class="arithmatex">\[
+\frac{\exp(x)}{\sum_{i=1}^{n} \exp(x_i)}
+\]</div>
+<ul>
+<li>输出是一个离散概率分布</li>
+<li>用于多分类任务</li>
+</ul>
+<h1 id="4">4. 优化器<a class="headerlink" href="#4" title="Permanent link">&para;</a></h1>
+<table>
+<thead>
+<tr>
+<th>优化器</th>
+<th>核心思想</th>
+<th>主要优点</th>
+<th>主要缺点</th>
+<th>常见场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SGD</strong></td>
+<td>直接沿负梯度方向更新</td>
+<td>简单、状态内存极低；调好后泛化通常不错</td>
+<td>对学习率敏感；收敛可能较慢、容易震荡</td>
+<td>基础实验、小模型；通常不会单独使用，而是配合动量 (<a href="https://docs.pytorch.org/docs/stable/generated/torch.optim.SGD.html?utm_source=chatgpt.com" title="SGD — PyTorch 2.13 documentation">PyTorch Docs</a>)</td>
+</tr>
+<tr>
+<td><strong>SGD + Momentum</strong></td>
+<td>累积梯度的指数移动平均，形成“惯性”</td>
+<td>抑制震荡、加速稳定方向；成熟可靠</td>
+<td>仍需认真调整学习率和调度器</td>
+<td>CNN、图像分类、传统监督学习的经典选择 (<a href="https://docs.pytorch.org/docs/stable/generated/torch.optim.SGD.html?utm_source=chatgpt.com" title="SGD — PyTorch 2.13 documentation">PyTorch Docs</a>)</td>
+</tr>
+<tr>
+<td><strong>Nesterov Momentum</strong></td>
+<td>在“预计到达的位置”计算修正梯度</td>
+<td>相比普通 Momentum 更有前瞻性</td>
+<td>实际优势依赖任务，仍需调参</td>
+<td>常作为 SGD 的 <code>nesterov=True</code> 选项</td>
+</tr>
+<tr>
+<td><strong>Adagrad</strong></td>
+<td>每个参数累计历史梯度平方，分别缩放学习率</td>
+<td>对稀疏特征和低频参数友好</td>
+<td>累积量只增不减，学习率可能过早衰减到接近零</td>
+<td>稀疏特征、推荐系统、传统 NLP；现代大模型中较少单独使用 (<a href="https://docs.pytorch.org/docs/stable/generated/torch.optim.Adagrad.html?utm_source=chatgpt.com" title="Adagrad — PyTorch 2.13 documentation">PyTorch Docs</a>)</td>
+</tr>
+<tr>
+<td><strong>RMSprop</strong></td>
+<td>用梯度平方的指数移动平均替代永久累积</td>
+<td>避免 Adagrad 学习率持续衰减；适应非平稳梯度</td>
+<td>超参数和实现细节较多；现代 Transformer 中通常让位于 AdamW</td>
+<td>RNN、强化学习及部分旧式网络 (<a href="https://docs.pytorch.org/docs/stable/generated/torch.optim.RMSprop.html?utm_source=chatgpt.com" title="RMSprop — PyTorch 2.12 documentation">PyTorch Docs</a>)</td>
+</tr>
+<tr>
+<td><strong>Adam</strong></td>
+<td>同时估计梯度的一阶矩和二阶矩，为每个参数设置自适应步长</td>
+<td>收敛快、初始调参相对容易，是很强的通用基线</td>
+<td>保存两份矩估计，状态内存较大；传统 (L_2) 正则与自适应缩放相互耦合</td>
+<td>快速原型、强化学习、无明显权重衰减需求的任务 (<a href="https://docs.pytorch.org/docs/stable/generated/torch.optim.Adam.html?utm_source=chatgpt.com" title="Adam — PyTorch 2.13 documentation">PyTorch Docs</a>)</td>
+</tr>
+<tr>
+<td><strong>AdamW</strong></td>
+<td>在 Adam 基础上将 weight decay 与梯度更新解耦</td>
+<td>正则化含义更清晰；训练 Transformer 稳定，生态成熟</td>
+<td>状态内存仍约为两份参数量；学习率、衰减率和调度器仍需设置</td>
+<td><strong>Transformer、LLM、Diffusion、ViT 的主流默认选择</strong> (<a href="https://docs.pytorch.org/docs/stable/generated/torch.optim.AdamW.html?utm_source=chatgpt.com" title="AdamW — PyTorch 2.13 documentation">PyTorch Docs</a>)</td>
+</tr>
+<tr>
+<td><strong>Adafactor</strong></td>
+<td>对矩阵参数的二阶矩做行列分解，避免保存完整二阶矩矩阵</td>
+<td>显著减少优化器状态；适合超大模型</td>
+<td>更新规则和学习率设置更特殊，调参经验不如 AdamW 通用</td>
+<td>内存受限的 Transformer、语言模型训练 (<a href="https://arxiv.org/abs/1804.04235?utm_source=chatgpt.com" title="Adaptive Learning Rates with Sublinear Memory Cost">arXiv</a>)</td>
+</tr>
+<tr>
+<td><strong>Lion</strong></td>
+<td>只维护动量，并用动量的符号决定更新方向</td>
+<td>比 Adam 少保存一份二阶矩状态；算法简单</td>
+<td>学习率通常需比 AdamW 小；并非所有任务都优于 AdamW</td>
+<td>大批量视觉模型、部分语言模型预训练和微调 (<a href="https://arxiv.org/pdf/2302.06675?utm_source=chatgpt.com" title="Symbolic Discovery of Optimization Algorithms">arXiv</a>)</td>
+</tr>
+<tr>
+<td><strong>LARS / LAMB</strong></td>
+<td>按层比较参数范数与更新范数，进行层级学习率缩放；LARS 基于 Momentum，LAMB 基于 Adam</td>
+<td>支持极大 batch 的分布式训练</td>
+<td>算法和调参更复杂；普通 batch 下未必优于通用优化器</td>
+<td>LARS 常见于大批量 CNN，LAMB 常见于大批量 BERT/Transformer 训练 (<a href="https://arxiv.org/abs/1904.00962?utm_source=chatgpt.com" title="[1904.00962] Large Batch Optimization for Deep Learning">arXiv</a>)</td>
+</tr>
+<tr>
+<td><strong>Muon</strong></td>
+<td>对二维权重矩阵的动量更新进行矩阵正交化，使不同奇异方向的更新尺度更均衡</td>
+<td>在部分 LLM 预训练实验中表现出较高计算效率；已进入 PyTorch</td>
+<td>属于较新的方法；主要处理二维隐藏层参数，偏置、嵌入等通常仍交给 AdamW</td>
+<td>新一代 LLM 预训练实验，尚未完全取代 AdamW (<a href="https://docs.pytorch.org/docs/stable/generated/torch.optim.Muon.html?utm_source=chatgpt.com" title="Muon — PyTorch 2.13 documentation">PyTorch Docs</a>)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>其中实践中通常以 AdamW 为默认基线，其他优化器只有在泛化、显存或超大规模训练存在明确需求时再替换。</p>
+</blockquote>
+<h1 id="5">5. 基础概念<a class="headerlink" href="#5" title="Permanent link">&para;</a></h1>
+<p><strong>LayerNorm/BatchNorm</strong></p>
+<blockquote>
+<p>LayerNorm/BatchNorm（层归一化/批量归一化）</p>
+</blockquote>
+<div class="arithmatex">\[
+x = (x_1, x_2, \ldots, x x_n)
+\]</div>
+<ol>
+<li>
+<p>计算均值 </p>
+<div class="arithmatex">\[
+\mu = \frac{1}{n} \sum\limits_i^n  x_i
+\]</div>
+</li>
+<li>
+<p>计算标准差 </p>
+<div class="arithmatex">\[
+\sigma = \sqrt{ \frac{1}{n} \sum\limits_i^n  (x_i - \mu)^2 }
+\]</div>
+</li>
+<li>
+<p><span class="arithmatex">\(\epsilon\)</span> 是一个很小的常量，用于避免除0错误</p>
+</li>
+<li>
+<p>归一化 </p>
+<div class="arithmatex">\[
+x_i = \frac{x_i - \mu}{\sqrt{\sigma^2 + \epsilon}}
+\]</div>
+</li>
+<li>
+<p>可学习平移缩放</p>
+<div class="arithmatex">\[
+x_i = \gamma x_i + \beta
+\]</div>
+</li>
+</ol>
+<p><strong>SFT</strong></p>
+<blockquote>
+<p>Supervised Fine-Tuning（监督微调）</p>
+</blockquote>
+<ul>
+<li>最大化正确回答问题的概率，主要解决指令遵循、回答格式和基础任务的能力</li>
+</ul>
+<div class="arithmatex">\[
+\mathcal{L}_{\text{SFT}}=-\sum_t \log p_{\theta}(y_t|x,y_{&lt; t})
+\]</div>
+<p><strong>RLHF</strong></p>
+<blockquote>
+<p>Reinforcement Learning with Human Feedback（基于人类反馈的强化学习）</p>
+</blockquote>
+<ul>
+<li>对同一个问题x，有两种回答A和B</li>
+<li>人工标记 <span class="arithmatex">\(A &gt; B\)</span></li>
+<li>训练奖励模型 <span class="arithmatex">\(r_{\phi}(x,y)\)</span>， 使得 <span class="arithmatex">\(r_{\phi}(x,A) &gt; r_{\phi}(x,B)\)</span>。</li>
+</ul>
+<p><strong>DPO</strong></p>
+<blockquote>
+<p>Direct Preference Optimization（直接偏好优化）</p>
+</blockquote>
+<ul>
+<li>训练模型提高较好回答相对于较坏回答的概率。</li>
+<li><span class="arithmatex">\(p_{\theta}(y_w|x) &gt; p_{\theta}(y_l|x)\)</span>，其中 <span class="arithmatex">\(y_w\)</span> 是较好回答，<span class="arithmatex">\(y_l\)</span> 是较坏回答。</li>
+</ul>
+<p><strong>LoRA</strong></p>
+<blockquote>
+<p>Low-Rank Adaptation（低秩微调）</p>
+</blockquote>
+<ul>
+<li>普通全参数微调会修改整个权重矩阵</li>
+<li>
+<p>LoRA冻结原参数W，只学习一个低秩增量 <span class="arithmatex">\(\Delta W\)</span></p>
+<div class="arithmatex">\[
+W_{new} = W + \Delta W
+\]</div>
+<div class="arithmatex">\[
+\Delta W = BA
+\]</div>
+</li>
+</ul>
+<p><strong>Benchmark</strong></p>
+<blockquote>
+<p>Benchmark（基准测试）</p>
+</blockquote>
+<ul>
+<li>数据集 + 任务 + 评估指标</li>
+</ul>
+<p><strong>logits</strong></p>
+<blockquote>
+<p>logits（未归一化输出）</p>
+</blockquote>
+<ul>
+<li>模型在Softmax之前输出的原始分数</li>
+</ul>
+<p><strong>量化</strong></p>
+<table>
+<thead>
+<tr>
+<th>量化对象</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>权重量化</strong></td>
+<td>将模型参数变成 INT8、INT4 等，主要降低模型大小和显存占用</td>
+</tr>
+<tr>
+<td><strong>激活量化</strong></td>
+<td>将网络中间结果量化，进一步降低推理显存和计算成本</td>
+</tr>
+<tr>
+<td><strong>权重＋激活量化</strong></td>
+<td>如 W8A8：权重 8 bit，激活 8 bit</td>
+</tr>
+<tr>
+<td><strong>KV Cache 量化</strong></td>
+<td>压缩 Transformer 推理时的键值缓存，适合长上下文</td>
+</tr>
+<tr>
+<td><strong>梯度量化</strong></td>
+<td>压缩训练或分布式通信中的梯度，主要用于训练阶段</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>训练后量化 PTQ</li>
+<li>不重新完整训练，成本低，但低比特时可能损失精度。常见于部署已有模型。</li>
+<li>量化感知训练 QAT</li>
+<li>模型会主动适应低精度表示，通常精度保持得更好，但训练成本更高。。</li>
+</ul>
+<p><strong>蒸馏</strong></p>
+<blockquote>
+<p>复杂函数在受限函数空间中的最佳近似</p>
+</blockquote>
+<ul>
+<li>标准知识蒸馏</li>
+</ul>
+<div class="arithmatex">\[
+p_T^{(\tau)}(y|x) = \text{softmax}(\frac{z_T(x)}{\tau})
+\]</div>
+<div class="arithmatex">\[
+p_S^{(\tau)}(y|x) = \text{softmax}(\frac{z_S(x)}{\tau})
+\]</div>
+<div class="arithmatex">\[
+\mathcal{L} = \alpha \text{CE}(y, p_S) + (1-\alpha)\tau^2 D_{KL}(p_S^{(\tau)}, p_T^{(\tau)})
+\]</div>
+<ul>
+<li><span class="arithmatex">\(\tau\)</span> : 温度系数</li>
+<li><span class="arithmatex">\(p_T^{(\tau)}(y|x)\)</span> : 教师模型输出的软概率</li>
+<li><span class="arithmatex">\(p_S^{(\tau)}(y|x)\)</span> : 学生模型输出的软概率</li>
+<li><span class="arithmatex">\(CE\)</span> : 交叉熵损失</li>
+<li><span class="arithmatex">\(D_{KL}\)</span> : KL散度损失</li>
+<li><span class="arithmatex">\(y\)</span> : 真实分布</li>
+<li><span class="arithmatex">\(z\)</span> : 模型输出的logits</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../mathjax-config.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
